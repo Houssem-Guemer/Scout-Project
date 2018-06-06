@@ -39,8 +39,8 @@
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('last_name') }}</strong>
                                     </span>
-                                {{-- @endif --}}
-                            </div>
+                                @endif
+                           </div>
                         </div>
 
                         <div class="form-group row">

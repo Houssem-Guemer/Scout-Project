@@ -22,15 +22,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- below style is intended to center the logo -->
     <style type="text/css">
-    .navbar-brand {
-      position: absolute;
-      width: auto;
-      left: 0;
-      top: 0;
-      text-align: center;
-      margin-left: 48%;
-      margin-right: 50%;
-    }
     .nav-link {
       text-align: center;
     }
@@ -39,7 +30,6 @@
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255, 255, 0.86)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
     }
   </style>
-
 </head>
 <body>
     <div id="app">
@@ -67,7 +57,7 @@
                               @hzerrad
                           -->
                           <li class="nav-item dropdown">
-                              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              <a id="navbarDropdown" class="btn alert-heading alert-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   {{ Auth::user()->getFullName() }} <span class="caret"></span>
                               </a>
 
@@ -95,7 +85,7 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="py-4 content">
             @yield('content')
         </main>
     </div>

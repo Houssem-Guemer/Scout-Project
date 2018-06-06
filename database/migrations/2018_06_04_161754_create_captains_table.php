@@ -16,6 +16,7 @@ class CreateCaptainsTable extends Migration
         Schema::create('captains', function (Blueprint $table) {
             $table->unsignedInteger('scout_id');
             $table->string('role', 3);
+            $table->string('unit', 10)->default(null);
             $table->boolean('apr')->default('0');
             $table->timestamps();
 
