@@ -15,7 +15,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
+                       <!-- <div class="form-group row">
                             <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">
@@ -57,7 +57,7 @@
                             <div class="col-md-3 col-sm-3 col-xs-3">
                                 @include('includes.datepicker.year')
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

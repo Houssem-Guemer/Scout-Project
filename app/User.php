@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -31,8 +32,12 @@ class User extends Authenticatable
     ];
 
     public function getFullName(){
-        return $this->first_name.' '.$this->last_name;
+        $result = DB::table('users')
+                ->join('scouts', 'scout_id', '=', 'assurance_num')
+                ->select('first_name', 'last_name')
+                ->where('scout_id', '=', $this->scout_id)->first();
+        
+        return $result->first_name.' '.$result->last_name;
     }
 
-
-}
+}   
