@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Scout extends Authenticatable
+class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'scouts';
+    protected $table = 'users';
     protected $primaryKey = 'scout_id';
 
     /**

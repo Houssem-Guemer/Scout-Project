@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScoutsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateScoutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('scouts', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             //Authentication Requirements
             $table->increments('scout_id');
             $table->string('email')->unique();

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Scout;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,7 +51,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:scouts',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -60,13 +60,13 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Scout
+     * @return \App\User
      */
     protected function create(array $data)
     {
         $date_of_birth = $data['year'].'-'.$data['month'].'-'.$data['day'];
 
-        return Scout::create([
+        return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
