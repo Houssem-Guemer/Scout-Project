@@ -25,15 +25,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- below style is intended to center the logo -->
     <style type="text/css">
-    .navbar-brand {
-      position: absolute;
-      width: auto;
-      left: 0;
-      top: 0;
-      text-align: center;
-      margin-left: 48%;
-      margin-right: 50%;
-    }
     .nav-link {
       text-align: center;
     }
@@ -56,7 +47,6 @@
         z-index: 1;
     }
   </style>
-
 </head>
 <body>
     <div id="app">

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Captain extends Model
+class UnitScout extends Model
 {
-    protected $table = 'captains';
+    protected $table = 'units';
     protected $primaryKey = 'scout_id';
-
+       
 }

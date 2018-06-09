@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCaptainsTable extends Migration
+class CreateConcernedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateCaptainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('captains', function (Blueprint $table) {
+        Schema::create('concerned', function (Blueprint $table) {
             $table->unsignedInteger('scout_id');
-            $table->string('role', 3);
-            $table->boolean('apr')->default('0');
-            $table->timestamps();
+            $table->unsignedInteger('activity_id');
 
-            //Foreign Key Constraint
-            $table->foreign('scout_id')->references('scout_id')->on('scouts')->onDelete('cascade');
+            $table->foreign('scout_id')->references('scout_id')->on('captains')->onDelete('cascade');
+            $table->foreign('activity_id')->references('activity_id')->on('activities')->onDelete('cascade');
         });
     }
 
@@ -31,6 +29,6 @@ class CreateCaptainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('captains');
+        Schema::dropIfExists('concerneds');
     }
 }
