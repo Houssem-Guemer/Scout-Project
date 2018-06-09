@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
-use App\Constants\Roles;
-use App\Constants\Stages;
-use App\Constants\Units;
+
 
 class PostsController extends Controller
 {
@@ -18,7 +16,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**

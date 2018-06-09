@@ -12,4 +12,6 @@ class Post extends Model
     protected $fillable = [
         'scout_id', 'title', 'text'
     ];
+
+    
 }
