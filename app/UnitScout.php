@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Unit extends Model
+class UnitScout extends Model
 {
     protected $table = 'units';
     protected $primaryKey = 'scout_id';

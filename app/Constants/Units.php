@@ -1,23 +1,26 @@
 <?php
+
+namespace App\Constants;
+
 class Units {
     /**
      * الاشبال
      */
-    public const UNITNAME_CUBS           = 'cubs'; 
+    public const CUBS           = 'cubs'; 
 
     /**
      * الكشاف
      */
-    public const UNITNAME_SCOUT          = 'sct';
+    public const SCOUT          = 'sct';
     
     /**
      * الكشاف المتقدم
      */
-    public const UNITNAME_ADVANCED_SCOUT = 'asct';
+    public const ADVANCED_SCOUT = 'asct';
 
     /**
      * الجوال
      */
-    public const UNITNAME_TRAVELLER      = 'tvlr';
+    public const TRAVELLER      = 'tvlr';
 
 }

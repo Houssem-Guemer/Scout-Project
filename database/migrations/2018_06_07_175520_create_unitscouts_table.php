@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnitsTable extends Migration
+class CreateUnitScoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('unitscouts', function (Blueprint $table) {
             $table->integer('scout_id')->unsigned()->unique();
-            $table->char('unit_name', 4);
+            $table->char('unit_id', 4);
             $table->char('stage', 4);
             $table->tinyInteger('sixfold_num', 2);
 
             $table->foreign('scout_id')->references('assurance_num')->on('scouts')->onDelete('cascade');
+            $table->foreign('unit_id')->references('unit_id')->on('units');
         });
     }
 

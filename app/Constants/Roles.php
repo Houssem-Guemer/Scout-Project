@@ -1,62 +1,65 @@
 <?php
+
+namespace App\Constants;
+
 class Roles{
     /**
      * المحافظ
      */
-     public const ROLE_GOVERNOR               = 'gov';
+     public const GOVERNOR               = 'gov';
 
      /**
       * نائب المحافظ, مسؤول الادارة
       */
-     public const ROLE_VICE_GOVERNOR          = 'vgov';
+     public const VICE_GOVERNOR          = 'vgov';
 
      /**
       * مسؤول الاعلام
       */
-     public const ROLE_MEDIA                  = 'med';
+     public const MEDIA                  = 'med';
 
      /**
       * نائب مسؤول الاعلام
       */
-     public const ROLE_VICE_MEDIA             = 'vmed';
+     public const VICE_MEDIA             = 'vmed';
 
      /**
       * مسؤول المالية
       */
-     public const ROLE_FINANCE                = 'fin';
+     public const FINANCE                = 'fin';
 
      /**
       * نائب مسؤول المالية, مسؤول العتاد
       */
-     public const ROLE_VICE_FINANCE           = 'vfin';
+     public const VICE_FINANCE           = 'vfin';
 
      /**
       * مسؤول خدمة المجتمع
       */
-     public const ROLE_PUBLIC_SERVICE         = 'psrv';
+     public const PUBLIC_SERVICE         = 'psrv';
 
      /**
       * نائب مسؤول خدمة المجتمع
       */
-     public const ROLE_VICE_PUBLIC_SERVICE    = 'vpsv';
+     public const VICE_PUBLIC_SERVICE    = 'vpsv';
 
      /**
       * قائد وحدة
       */
-     public const ROLE_UNIT_CAPTAIN           = 'ucap';
+     public const UNIT_CAPTAIN           = 'ucap';
 
      /**
       * نائب قائد وحدة
       */
-     public const ROLE_UNIT_VICE_CAPTAIN      = 'vucp';
+     public const UNIT_VICE_CAPTAIN      = 'vucp';
 
      /**
       * قائد وحدة مساعد
       */
-     public const ROLE_UNIT_CAPTAIN_ASSISTANT = 'capa';
+     public const UNIT_CAPTAIN_ASSISTANT = 'capa';
 
      /**
       * قائد وحدة متربص
       */
-     public const ROLE_UNIT_CAPTAIN_TRAINEE   = 'trne';
+     public const UNIT_CAPTAIN_TRAINEE   = 'trne';
 }

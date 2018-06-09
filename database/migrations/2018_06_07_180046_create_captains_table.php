@@ -19,6 +19,7 @@ class CreateCaptainsTable extends Migration
             $table->char('unit', 4)->nullable();
 
             $table->foreign('scout_id')->references('assurance_num')->on('scouts')->oDelete('cascade');
+            $table->foreign('unit')->references('unit_id')->on('units');
         });
     }
 

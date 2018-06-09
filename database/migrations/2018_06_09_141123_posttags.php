@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnitsTable extends Migration
+class Posttags extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('units', function (Blueprint $table) {
-            $table->char('unit_id', 4)->unique();
-            $table->string('unit_name', 15);
+        Schema::create('posttags', function(Blueprint $table){
+            $table->integer('post_id')->unsigned()->unique();
+            $table->unsignedInteger('tag');
+
+            $table->primary(array('post_id', 'tag'));
+            $table->foreign('post_id')->references('post_id')->on('posts')->onDelete('cascade');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('units');
+        //
     }
 }
