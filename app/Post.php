@@ -10,7 +10,7 @@ class Post extends Model
     protected $primaryKey = 'post_id';
 
     protected $fillable = [
-        'scout_id', 'title', 'text'
+        'post_id', 'title', 'text'
     ];
 
     

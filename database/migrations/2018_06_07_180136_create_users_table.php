@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             //Authentication Requirements
 
             //User can login using either his id or his email
-            $table->integer('scout_id')->unsigned()->unique();
+            $table->integer('scout_id')->unsigned()->unique()->default(1234567891);
             $table->string('email')->nullable()->default(null)->unique();
             $table->string('password');
 
