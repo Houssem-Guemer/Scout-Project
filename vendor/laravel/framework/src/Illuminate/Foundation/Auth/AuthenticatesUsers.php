@@ -15,12 +15,10 @@ trait AuthenticatesUsers
      *
      * @return \Illuminate\Http\Response
      */
-    /*
     public function showLoginForm()
     {
         return view('auth.login');
     }
-    */
 
     /**
      * Handle a login request to the application.
@@ -64,8 +62,7 @@ trait AuthenticatesUsers
     protected function validateLogin(Request $request)
     {
         $this->validate($request, [
-            $this->
-            username() => 'required|string',
+            $this->username() => 'required|string',
             'password' => 'required|string',
         ]);
     }
