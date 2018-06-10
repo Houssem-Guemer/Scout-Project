@@ -51,51 +51,39 @@
         </a>
     </div>
 
-    <table  width="100%">
-        <tr  >
-            <td >
-                <div class="card" style="width:100@parent%;height: 180px;align-items: center; margin:10px;border-color: black; border: 2px solid black;
-                        border-radius: 20px; ">
-
-                    <div class="card-body">
-                        <h1 class="card-title" style="text-align: center"> وحدة المتقدم</h1>
-                        <p class="card-text" style="font-size: 15px;text-align: center">دائما همة و نشاط</p>
-                        <div class="wrapper">
-                            <a href="#" class="btn btn-primary button " style="margin-right: 60%;margin-left: 20%">للاطلاع على المزيد</a>
-                        </div>
+    <div class="container-fluid row mx-auto">
+        <div class="card col-md-4 col-sm-4 col-xs-6 py-4 my-2">
+            <div class="card-body">
+                <h1 class="card-title" style="text-align: center"> وحدة المتقدم</h1></br>
+                <p class="card-text" style="font-size: 15px;text-align: center">دائما همة و نشاط</p></br>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary">للاطلاع على المزيد</a>
                     </div>
-                </div>
-            </td>
-            <td >
-                <div class="card" style="width:100%;height: 180px; margin:10px; align-items: center;  ;border: 2px solid black;
-                        border-radius: 20px;">
-                    <div class="card-body" style="align-items: center">
-                        <h1 class="card-title" style="text-align: center">وحدة الكشاف</h1>
-                        <p class="card-text " style="font-size: 15px;text-align: center">وحدة الكشاف شعارنا قوة...أخوة...فتوة</p>
+            </div>
+        </div>
 
-                            <a href="#" class="btn btn-primary button " style="margin-right: 60%;margin-left: 30%" >للاطلاع على المزيد</a>
+        <div class="card col-md-4 col-sm-4 col-xs-6 mx-auto py-4 my-2">
+            <div class="card-body" style="align-items: center">
+                <h1 class="card-title" style="text-align: center">وحدة الكشاف</h1>
+            </br>
+                <p class="card-text " style="font-size: 15px;text-align: center">وحدة الكشاف شعارنا قوة...أخوة...فتوة</p>
+            </br>
+            <div class="text-center">
+                <a href="#" class="btn btn-primary " >للاطلاع على المزيد</a>
+            </div>
 
-                    </div>
-                </div>
-            </td>
-            <td  class="px-3 py-2" >
-                <div class="card" style="width:100@parent%;height: 180px; margin:10px;align-items: center;border: 2px solid black;
-                        border-radius: 20px;">
-                    <div class="card-body">
-                        <h1 class="card-title" style="text-align: center">وحدة الاشبال</h1>
-                        <p class="card-text" style="font-size: 15px;text-align: center">سرب اشبال الاقصى</p>
-
-
-
-
-                            <a href="#" class="btn btn-primary button  " style="margin-right: 60%;margin-left: 20%" >للاطلاع على المزيد</a>
-
-                    </div>
-                </div>
-            </td>
-
-        </tr>
-    </table>
+            </div>
+        </div>
+        <div class="card col-md-4 col-sm-4 col-xs-6 py-4 my-2">
+            <div class="card-body">
+                <h1 class="card-title" style="text-align: center">وحدة الاشبال</h1></br>
+                <p class="card-text" style="font-size: 15px;text-align: center">سرب اشبال الاقصى</p></br>
+                <div class="text-center">
+                    <a href="#" class="btn btn-primary" >للاطلاع على المزيد</a>
+                </div>                
+            </div>
+        </div>
+    </div>
 
 
 
