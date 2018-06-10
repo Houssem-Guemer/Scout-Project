@@ -22,7 +22,7 @@
                       @hzerrad
                   -->
                   <li class="nav-item dropdown">
-                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                      <a id="navbarDropdown" class="nav-link dropdown-toggle btn alert-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           {{ Auth::user()->getFullName() }} <span class="caret"></span>
                       </a>
 
@@ -47,6 +47,7 @@
                     <!-- this is the about link -->
                     <a class="nav-link {{ Route::currentRouteNamed('about') ? 'active' : '' }}" href="/about" style="font-size: medium;margin-right: 8px;margin-left: 8px">تعرف علينا</a>
                 </li>
+
                 <!-- this is the groups dropdown button -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: medium;margin-right: 8px;margin-left: 8px">الأفواج</a>

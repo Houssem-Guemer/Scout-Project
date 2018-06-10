@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -25,15 +29,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- below style is intended to center the logo -->
     <style type="text/css">
-    .navbar-brand {
-      position: absolute;
-      width: auto;
-      left: 0;
-      top: 0;
-      text-align: center;
-      margin-left: 48%;
-      margin-right: 50%;
-    }
     .nav-link {
       text-align: center;
     }
@@ -56,7 +51,6 @@
         z-index: 1;
     }
   </style>
-
 </head>
 <body>
     <div id="app">

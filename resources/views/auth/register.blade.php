@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -15,7 +15,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
+                       <!-- <div class="form-group row">
                             <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">
@@ -40,24 +40,24 @@
                                         <strong>{{ $errors->first('last_name') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                           </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth')}}</label>
 
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-2 col-xs-2">
                               @include('includes.datepicker.day')
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
                                 @include('includes.datepicker.month')
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
                                 @include('includes.datepicker.year')
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -97,7 +97,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary center">
                                     {{ __('Register') }}
                                 </button>
                             </div>
