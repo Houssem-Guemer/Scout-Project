@@ -70,7 +70,7 @@ class User extends Authenticatable
     public function getUnit(){
         $unit = DB::select("SELECT unit FROM Users NATURAL JOIN Captains WHERE Users.scout_id = ?", [$this->scout_id]);
         if(count(unit) > 0)
-            return unit[0]->unit;
+            return $unit[0]->unit;
         else
             return NULL;
     }
