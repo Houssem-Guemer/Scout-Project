@@ -8,10 +8,10 @@
     @foreach($settingdata as $view)
 	<div class="page-content vertical-align-middle" style="background: rgba(40, 41, 41, 0.17);">
       <div class="brand">
-	  <img class="navbar-brand-logo" style="height:50px" src="{{URL::to('/')}}/uploads/{{$view->logo}}" title="Farazisoft"/>
-        <h2 class="brand-text"> {{$view->app_name}}</h2>
+	  <img class="navbar-brand-logo" style="height:50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Scout_Logo.svg/520px-Scout_Logo.svg.png" title="Farazisoft"/>
+        <h2 class="brand-text"> فوج الفلاح استمرارية و نجاح</h2>
       </div>
-      <p> {{ trans('app.sing_into_your_pages_account')}}</p>
+      <p> قم بتسجيل الدخول إلى حساب صفحاتك</p>
        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}         
 		 
@@ -37,39 +37,30 @@
 		</div>
 		
           <div class="form-group clearfix">
-		  @if($view->remember_me == 'ON')
-            <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
-              <input type="checkbox" id="remember" name="checkbox" title="remember">
-              <label for="inputCheckbox">{{ trans('app.remember_me')}}</label>
-            </div>
-			@endif
-			  @if($view->forget_password == 'ON')
-				<a class="pull-right" href="{{ url('/password/reset') }}">{{ trans('app.forget_password')}} </a>
-			  @endif
+              @if($view->forget_password == 'ON')
+                  <a class="pull-left" href="{{ url('/password/reset') }}">هل نسيت الرقم السري ؟ </a>
+              @endif
+                  @if($view->remember_me == 'ON')
+                      <div class="checkbox-custom  checkbox-primary pull-right" >
+
+                          <input type="checkbox" id="remember" name="checkbox" title="remember">
+                          <label></label>
+                      </div>
+
+                      <label class="pull-right" style="text-align: center;margin-right: 5px;margin-top: 6px">تذكرني ؟</label>
+                  @endif
+
 			
 		  </div>
           <!--<button type="submit" class="btn btn-primary btn-block" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading..">{{ trans('app.sign_in')}}</button>-->
         
 		<button type="submit" class="btn btn-primary ladda-button btn-block" data-plugin="ladda" data-style="expand-left">
-			  {{ trans('app.sign_in')}}
+			تسجيل الدخول
 		<span class="ladda-spinner"></span><div class="ladda-progress" style="width: 0;"></div>
 		</button>
 		
 		</form>
-		 <p>{{ trans('app.still_no_account_please_go_to')}} <a href="{{ url('/register') }}"> {{ trans('app.register')}} </a></p>
-      <footer style="padding:20px">          
-          <div class="social">           
-            <a class="btn btn-icon btn-round social-facebook" href="{{ url('/redirect/facebook') }}">
-              <i class="icon bd-facebook" aria-hidden="true"></i>
-            </a>
-            <a class="btn btn-icon btn-round social-google-plus" href="{{ url('/redirect/google') }}">
-              <i class="icon bd-google-plus" aria-hidden="true"></i>
-            </a>
-			 <a class="btn btn-icon btn-round social-twitter" href="{{ url('/redirect/twitter') }}">
-              <i class="icon bd-twitter" aria-hidden="true"></i>
-            </a>
-          </div>
-        </footer>
+
     </div>
 </div>
 @endforeach

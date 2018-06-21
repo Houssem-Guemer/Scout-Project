@@ -16,6 +16,8 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('تعرف على قادتنا/', 'HomeController@annuaire');
+Route::get('/تعرف على قادتنا/{id}', 'LeaderInformationCTRL@index');
 
 Route::get('/login', 'DashboardController@index');
 Route::get('/logout', 'DashboardController@index');
