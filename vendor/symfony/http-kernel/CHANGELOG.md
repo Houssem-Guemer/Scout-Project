@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 4.1.0
 -----
 
@@ -34,6 +35,8 @@ CHANGELOG
  * removed the `CacheaWarmerAggregate::add()` and `setWarmers()` methods
  * made `CacheWarmerAggregate` and `ChainCacheClearer` classes final
 
+=======
+>>>>>>> dashboard-test
 3.4.0
 -----
 

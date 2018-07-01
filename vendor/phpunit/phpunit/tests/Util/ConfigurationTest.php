@@ -22,21 +22,21 @@ class ConfigurationTest extends TestCase
      */
     protected $configuration;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->configuration = Configuration::getInstance(
             \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.xml'
         );
     }
 
-    public function testExceptionIsThrownForNotExistingConfigurationFile(): void
+    public function testExceptionIsThrownForNotExistingConfigurationFile()
     {
         $this->expectException(Exception::class);
 
         Configuration::getInstance('not_existing_file.xml');
     }
 
-    public function testShouldReadColorsWhenTrueInConfigurationFile(): void
+    public function testShouldReadColorsWhenTrueInConfigurationFile()
     {
         $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.colors.true.xml';
         $configurationInstance = Configuration::getInstance($configurationFilename);
@@ -45,7 +45,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals(ResultPrinter::COLOR_AUTO, $configurationValues['colors']);
     }
 
-    public function testShouldReadColorsWhenFalseInConfigurationFile(): void
+    public function testShouldReadColorsWhenFalseInConfigurationFile()
     {
         $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.colors.false.xml';
         $configurationInstance = Configuration::getInstance($configurationFilename);
@@ -54,7 +54,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals(ResultPrinter::COLOR_NEVER, $configurationValues['colors']);
     }
 
-    public function testShouldReadColorsWhenEmptyInConfigurationFile(): void
+    public function testShouldReadColorsWhenEmptyInConfigurationFile()
     {
         $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.colors.empty.xml';
         $configurationInstance = Configuration::getInstance($configurationFilename);
@@ -63,7 +63,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals(ResultPrinter::COLOR_NEVER, $configurationValues['colors']);
     }
 
-    public function testShouldReadColorsWhenInvalidInConfigurationFile(): void
+    public function testShouldReadColorsWhenInvalidInConfigurationFile()
     {
         $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.colors.invalid.xml';
         $configurationInstance = Configuration::getInstance($configurationFilename);
@@ -72,67 +72,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals(ResultPrinter::COLOR_NEVER, $configurationValues['colors']);
     }
 
-    public function testInvalidConfigurationGeneratesValidationErrors(): void
-    {
-        $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.colors.invalid.xml';
-        $configurationInstance = Configuration::getInstance($configurationFilename);
-
-        $this->assertTrue($configurationInstance->hasValidationErrors());
-        $this->assertArraySubset([1 => ["Element 'phpunit', attribute 'colors': 'Something else' is not a valid value of the atomic type 'xs:boolean'."]], $configurationInstance->getValidationErrors());
-    }
-
-    public function testNonIntegerValueReturnsDefault(): void
-    {
-        $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.columns.default.xml';
-        $configurationInstance = Configuration::getInstance($configurationFilename);
-        $configurationValues   = $configurationInstance->getPHPUnitConfiguration();
-
-        $this->assertEquals(80, $configurationValues['columns']);
-    }
-
-    /**
-     * @dataProvider configurationRootOptionsProvider
-     *
-     * @param bool|int|string $expected
-     */
-    public function testConfigurationRootOptions(string $optionName, string $optionValue, $expected): void
-    {
-        $tmpFilename = \sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'phpunit.' . $optionName . \uniqid() . '.xml';
-        $xml         = "<phpunit $optionName='$optionValue'></phpunit>" . PHP_EOL;
-        \file_put_contents($tmpFilename, $xml);
-
-        $configurationInstance = Configuration::getInstance($tmpFilename);
-        $this->assertFalse($configurationInstance->hasValidationErrors(), 'option causes validation error');
-
-        $configurationValues   = $configurationInstance->getPHPUnitConfiguration();
-        $this->assertEquals($expected, $configurationValues[$optionName]);
-
-        @\unlink($tmpFilename);
-    }
-
-    public function configurationRootOptionsProvider(): array
-    {
-        return [
-            ['executionOrder', 'default', TestSuiteSorter::ORDER_DEFAULT],
-            ['executionOrder', 'random', TestSuiteSorter::ORDER_RANDOMIZED],
-            ['executionOrder', 'reverse', TestSuiteSorter::ORDER_REVERSED],
-            ['columns', 'max', 'max'],
-            ['stopOnFailure', 'true', true],
-            ['stopOnWarning', 'true', true],
-            ['stopOnIncomplete', 'true', true],
-            ['stopOnRisky', 'true', true],
-            ['stopOnSkipped', 'true', true],
-            ['failOnWarning', 'true', true],
-            ['failOnRisky', 'true', true],
-            ['disableCodeCoverageIgnore', 'true', true],
-            ['processIsolation', 'true', true],
-            ['testSuiteLoaderFile', '/path/to/file', '/path/to/file'],
-            ['reverseDefectList', 'true', true],
-            ['registerMockObjectsFromTestArgumentsRecursively', 'true', true],
-        ];
-    }
-
-    public function testFilterConfigurationIsReadCorrectly(): void
+    public function testFilterConfigurationIsReadCorrectly()
     {
         $this->assertEquals(
             [
@@ -181,7 +121,7 @@ class ConfigurationTest extends TestCase
         );
     }
 
-    public function testGroupConfigurationIsReadCorrectly(): void
+    public function testGroupConfigurationIsReadCorrectly()
     {
         $this->assertEquals(
             [
@@ -198,7 +138,7 @@ class ConfigurationTest extends TestCase
         );
     }
 
-    public function testTestdoxGroupConfigurationIsReadCorrectly(): void
+    public function testTestdoxGroupConfigurationIsReadCorrectly()
     {
         $this->assertEquals(
             [
@@ -215,7 +155,7 @@ class ConfigurationTest extends TestCase
         );
     }
 
-    public function testListenerConfigurationIsReadCorrectly(): void
+    public function testListenerConfigurationIsReadCorrectly()
     {
         $dir         = __DIR__;
         $includePath = \ini_get('include_path');
@@ -265,55 +205,7 @@ class ConfigurationTest extends TestCase
         \ini_set('include_path', $includePath);
     }
 
-    public function testExtensionConfigurationIsReadCorrectly(): void
-    {
-        $dir         = __DIR__;
-        $includePath = \ini_get('include_path');
-
-        \ini_set('include_path', $dir . PATH_SEPARATOR . $includePath);
-
-        $this->assertEquals(
-            [
-                0 =>
-                    [
-                        'class'     => 'MyExtension',
-                        'file'      => '/optional/path/to/MyExtension.php',
-                        'arguments' =>
-                            [
-                                0 =>
-                                    [
-                                        0 => 'Sebastian',
-                                    ],
-                                1 => 22,
-                                2 => 'April',
-                                3 => 19.78,
-                                4 => null,
-                                5 => new \stdClass,
-                                6 => \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'MyTestFile.php',
-                                7 => \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'MyRelativePath',
-                            ],
-                    ],
-                [
-                    'class'     => 'IncludePathExtension',
-                    'file'      => __FILE__,
-                    'arguments' => []
-                ],
-                [
-                    'class'     => 'CompactArgumentsExtension',
-                    'file'      => '/CompactArgumentsExtension.php',
-                    'arguments' =>
-                        [
-                            0 => 42
-                        ],
-                ],
-            ],
-            $this->configuration->getExtensionConfiguration()
-        );
-
-        \ini_set('include_path', $includePath);
-    }
-
-    public function testLoggingConfigurationIsReadCorrectly(): void
+    public function testLoggingConfigurationIsReadCorrectly()
     {
         $this->assertEquals(
             [
@@ -338,7 +230,7 @@ class ConfigurationTest extends TestCase
         );
     }
 
-    public function testPHPConfigurationIsReadCorrectly(): void
+    public function testPHPConfigurationIsReadCorrectly()
     {
         $this->assertEquals(
             [
@@ -365,7 +257,7 @@ class ConfigurationTest extends TestCase
     /**
      * @backupGlobals enabled
      */
-    public function testPHPConfigurationIsHandledCorrectly(): void
+    public function testPHPConfigurationIsHandledCorrectly()
     {
         $this->configuration->handlePHPConfiguration();
 
@@ -389,7 +281,7 @@ class ConfigurationTest extends TestCase
      *
      * @see https://github.com/sebastianbergmann/phpunit/issues/1181
      */
-    public function testHandlePHPConfigurationDoesNotOverwrittenExistingEnvArrayVariables(): void
+    public function testHandlePHPConfigurationDoesNotOverwrittenExistingEnvArrayVariables()
     {
         $_ENV['foo'] = false;
         $this->configuration->handlePHPConfiguration();
@@ -403,7 +295,7 @@ class ConfigurationTest extends TestCase
      *
      * @see https://github.com/sebastianbergmann/phpunit/issues/2353
      */
-    public function testHandlePHPConfigurationDoesForceOverwrittenExistingEnvArrayVariables(): void
+    public function testHandlePHPConfigurationDoesForceOverwrittenExistingEnvArrayVariables()
     {
         $_ENV['foo_force'] = false;
         $this->configuration->handlePHPConfiguration();
@@ -417,7 +309,7 @@ class ConfigurationTest extends TestCase
      *
      * @see https://github.com/sebastianbergmann/phpunit/issues/1181
      */
-    public function testHandlePHPConfigurationDoesNotOverriteVariablesFromPutEnv(): void
+    public function testHandlePHPConfigurationDoesNotOverriteVariablesFromPutEnv()
     {
         \putenv('foo=putenv');
         $this->configuration->handlePHPConfiguration();
@@ -431,7 +323,7 @@ class ConfigurationTest extends TestCase
      *
      * @see https://github.com/sebastianbergmann/phpunit/issues/1181
      */
-    public function testHandlePHPConfigurationDoesOverwriteVariablesFromPutEnvWhenForced(): void
+    public function testHandlePHPConfigurationDoesOverwriteVariablesFromPutEnvWhenForced()
     {
         \putenv('foo_force=putenv');
         $this->configuration->handlePHPConfiguration();
@@ -440,7 +332,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals('forced', \getenv('foo_force'));
     }
 
-    public function testPHPUnitConfigurationIsReadCorrectly(): void
+    public function testPHPUnitConfigurationIsReadCorrectly()
     {
         $this->assertEquals(
             [
@@ -483,7 +375,7 @@ class ConfigurationTest extends TestCase
         );
     }
 
-    public function testXincludeInConfiguration(): void
+    public function testXincludeInConfiguration()
     {
         $configurationWithXinclude = Configuration::getInstance(
             \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration_xinclude.xml'
@@ -498,7 +390,7 @@ class ConfigurationTest extends TestCase
     /**
      * @ticket 1311
      */
-    public function testWithEmptyConfigurations(): void
+    public function testWithEmptyConfigurations()
     {
         $emptyConfiguration = Configuration::getInstance(
             \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration_empty.xml'
@@ -525,40 +417,13 @@ class ConfigurationTest extends TestCase
         $this->assertEmpty($filter['whitelist']['exclude']['file']);
     }
 
-    public function testGetTestSuiteNamesReturnsTheNamesIfDefined(): void
-    {
-        $configuration = Configuration::getInstance(
-            \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.suites.xml'
-        );
-
-        $names = $configuration->getTestSuiteNames();
-
-        $this->assertEquals(['Suite One', 'Suite Two'], $names);
-    }
-
-    public function testTestSuiteConfigurationForASingleFileInASuite(): void
-    {
-        $configuration = Configuration::getInstance(
-            \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.one-file-suite.xml'
-        );
-
-        $config = $configuration->getTestSuiteConfiguration();
-        $tests  = $config->tests();
-
-        $this->assertCount(1, $tests);
-    }
-
     /**
      * Asserts that the values in $actualConfiguration equal $expectedConfiguration.
      *
      * @param Configuration $expectedConfiguration
      * @param Configuration $actualConfiguration
-     *
-     * @throws Exception
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    protected function assertConfigurationEquals(Configuration $expectedConfiguration, Configuration $actualConfiguration): void
+    protected function assertConfigurationEquals(Configuration $expectedConfiguration, Configuration $actualConfiguration)
     {
         $this->assertEquals(
             $expectedConfiguration->getFilterConfiguration(),
@@ -594,5 +459,28 @@ class ConfigurationTest extends TestCase
             $expectedConfiguration->getTestSuiteConfiguration(),
             $actualConfiguration->getTestSuiteConfiguration()
         );
+    }
+
+    public function testGetTestSuiteNamesReturnsTheNamesIfDefined()
+    {
+        $configuration = Configuration::getInstance(
+            \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.suites.xml'
+        );
+
+        $names = $configuration->getTestSuiteNames();
+
+        $this->assertEquals(['Suite One', 'Suite Two'], $names);
+    }
+
+    public function testTestSuiteConfigurationForASingleFileInASuite()
+    {
+        $configuration = Configuration::getInstance(
+            \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.one-file-suite.xml'
+        );
+
+        $config = $configuration->getTestSuiteConfiguration();
+        $tests  = $config->tests();
+
+        $this->assertEquals(1, \count($tests));
     }
 }

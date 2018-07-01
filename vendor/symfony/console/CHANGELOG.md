@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 4.1.0
 -----
 
@@ -18,6 +19,8 @@ CHANGELOG
 * removed `ConsoleExceptionEvent`
 * removed `ConsoleEvents::EXCEPTION`
 
+=======
+>>>>>>> dashboard-test
 3.4.0
 -----
 

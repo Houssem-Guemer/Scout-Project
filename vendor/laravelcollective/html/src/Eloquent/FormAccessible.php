@@ -49,11 +49,11 @@ trait FormAccessible
             unset($keys[0]);
             $key = implode('.', $keys);
 
-            if (method_exists($relatedModel, 'hasFormMutator') && $key !== '' && $relatedModel->hasFormMutator($key)) {
+            if ($this->hasFormMutator($key)) {
                 return $relatedModel->getFormValue($key);
             }
 
-            return data_get($relatedModel, empty($key)? null: $key);
+            return data_get($relatedModel, $key);
         }
 
         // No form mutator, let the model resolve this
@@ -81,7 +81,7 @@ trait FormAccessible
      *
      * @return bool
      */
-    public function hasFormMutator($key)
+    protected function hasFormMutator($key)
     {
         $methods = $this->getReflection()->getMethods(ReflectionMethod::IS_PUBLIC);
 

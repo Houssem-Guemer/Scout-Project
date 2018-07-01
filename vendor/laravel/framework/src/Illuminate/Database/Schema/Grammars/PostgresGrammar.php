@@ -30,13 +30,6 @@ class PostgresGrammar extends Grammar
     protected $serials = ['bigInteger', 'integer', 'mediumInteger', 'smallInteger', 'tinyInteger'];
 
     /**
-     * The commands to be executed outside of create or alter command.
-     *
-     * @var array
-     */
-    protected $fluentCommands = ['Comment'];
-
-    /**
      * Compile the query to determine if a table exists.
      *
      * @return string
@@ -311,21 +304,6 @@ class PostgresGrammar extends Grammar
     }
 
     /**
-     * Compile a rename index command.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint $blueprint
-     * @param  \Illuminate\Support\Fluent $command
-     * @return string
-     */
-    public function compileRenameIndex(Blueprint $blueprint, Fluent $command)
-    {
-        return sprintf('alter index %s rename to %s',
-            $this->wrap($command->from),
-            $this->wrap($command->to)
-        );
-    }
-
-    /**
      * Compile the command to enable foreign key constraints.
      *
      * @return string
@@ -343,22 +321,6 @@ class PostgresGrammar extends Grammar
     public function compileDisableForeignKeyConstraints()
     {
         return 'SET CONSTRAINTS ALL DEFERRED;';
-    }
-
-    /**
-     * Compile a comment command.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
-     * @return string
-     */
-    public function compileComment(Blueprint $blueprint, Fluent $command)
-    {
-        return sprintf('comment on column %s.%s is %s',
-            $this->wrapTable($blueprint),
-            $this->wrap($command->column->name),
-            "'".str_replace("'", "''", $command->value)."'"
-        );
     }
 
     /**
@@ -527,18 +489,18 @@ class PostgresGrammar extends Grammar
     }
 
     /**
-     * Create the column definition for an enumeration type.
+     * Create the column definition for an enum type.
      *
      * @param  \Illuminate\Support\Fluent  $column
      * @return string
      */
     protected function typeEnum(Fluent $column)
     {
-        return sprintf(
-            'varchar(255) check ("%s" in (%s))',
-            $column->name,
-            $this->quoteString($column->allowed)
-        );
+        $allowed = array_map(function ($a) {
+            return "'{$a}'";
+        }, $column->allowed);
+
+        return "varchar(255) check (\"{$column->name}\" in (".implode(', ', $allowed).'))';
     }
 
     /**

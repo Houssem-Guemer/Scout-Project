@@ -32,6 +32,11 @@ class TokenStream
     private $tokens = array();
 
     /**
+     * @var bool
+     */
+    private $frozen = false;
+
+    /**
      * @var Token[]
      */
     private $used = array();
@@ -44,7 +49,7 @@ class TokenStream
     /**
      * @var Token|null
      */
-    private $peeked;
+    private $peeked = null;
 
     /**
      * @var bool
@@ -54,7 +59,9 @@ class TokenStream
     /**
      * Pushes a token.
      *
-     * @return $this
+     * @param Token $token
+     *
+     * @return TokenStream
      */
     public function push(Token $token)
     {
@@ -66,10 +73,12 @@ class TokenStream
     /**
      * Freezes stream.
      *
-     * @return $this
+     * @return TokenStream
      */
     public function freeze()
     {
+        $this->frozen = true;
+
         return $this;
     }
 

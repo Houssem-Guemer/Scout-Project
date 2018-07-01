@@ -119,6 +119,7 @@ abstract class AnnotationClassLoader implements LoaderInterface
             }
         }
 
+<<<<<<< HEAD
         if (0 === $collection->count() && $class->hasMethod('__invoke')) {
             foreach ($this->reader->getClassAnnotations($class) as $annot) {
                 if ($annot instanceof $this->routeAnnotationClass) {
@@ -129,6 +130,12 @@ abstract class AnnotationClassLoader implements LoaderInterface
                     $this->addRoute($collection, $annot, $globals, $class, $class->getMethod('__invoke'));
                 }
             }
+=======
+        if (0 === $collection->count() && $class->hasMethod('__invoke') && $annot = $this->reader->getClassAnnotation($class, $this->routeAnnotationClass)) {
+            $globals['path'] = '';
+            $globals['name'] = '';
+            $this->addRoute($collection, $annot, $globals, $class, $class->getMethod('__invoke'));
+>>>>>>> dashboard-test
         }
 
         return $collection;

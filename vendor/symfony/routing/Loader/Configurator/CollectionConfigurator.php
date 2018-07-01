@@ -26,7 +26,11 @@ class CollectionConfigurator
     private $parentConfigurator;
     private $parentPrefixes;
 
+<<<<<<< HEAD
     public function __construct(RouteCollection $parent, string $name, self $parentConfigurator = null, array $parentPrefixes = null)
+=======
+    public function __construct(RouteCollection $parent, $name, self $parentConfigurator = null)
+>>>>>>> dashboard-test
     {
         $this->parent = $parent;
         $this->name = $name;
@@ -38,9 +42,27 @@ class CollectionConfigurator
 
     public function __destruct()
     {
+<<<<<<< HEAD
         if (null === $this->prefixes) {
             $this->collection->addPrefix($this->route->getPath());
         }
+=======
+        $this->collection->addPrefix(rtrim($this->route->getPath(), '/'));
+        $this->parent->addCollection($this->collection);
+    }
+
+    /**
+     * Adds a route.
+     *
+     * @param string $name
+     * @param string $path
+     *
+     * @return RouteConfigurator
+     */
+    final public function add($name, $path)
+    {
+        $this->collection->add($this->name.$name, $route = clone $this->route);
+>>>>>>> dashboard-test
 
         $this->parent->addCollection($this->collection);
     }
@@ -58,7 +80,11 @@ class CollectionConfigurator
     /**
      * Sets the prefix to add to the path of all child routes.
      *
+<<<<<<< HEAD
      * @param string|array $prefix the prefix, or the localized prefixes
+=======
+     * @param string $prefix
+>>>>>>> dashboard-test
      *
      * @return $this
      */

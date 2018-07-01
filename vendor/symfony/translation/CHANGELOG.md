@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 4.1.0
 -----
 
@@ -15,6 +16,8 @@ CHANGELOG
  * removed `TranslationWriter::writeTranslations()` method
  * removed support for passing `MessageSelector` instances to the constructor of the `Translator` class
 
+=======
+>>>>>>> dashboard-test
 3.4.0
 -----
 

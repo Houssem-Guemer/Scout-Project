@@ -153,12 +153,10 @@ class Grammar extends BaseGrammar
      */
     protected function compileJoins(Builder $query, $joins)
     {
-        return collect($joins)->map(function ($join) use ($query) {
+        return collect($joins)->map(function ($join) {
             $table = $this->wrapTable($join->table);
 
-            $nestedJoins = is_null($join->joins) ? '' : ' '.$this->compileJoins($query, $join->joins);
-
-            return trim("{$join->type} join {$table}{$nestedJoins} {$this->compileWheres($join)}");
+            return trim("{$join->type} join {$table} {$this->compileWheres($join)}");
         })->implode(' ');
     }
 
@@ -481,49 +479,6 @@ class Grammar extends BaseGrammar
     }
 
     /**
-     * Compile a where row values condition.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $where
-     * @return string
-     */
-    protected function whereRowValues(Builder $query, $where)
-    {
-        $values = $this->parameterize($where['values']);
-
-        return '('.implode(', ', $where['columns']).') '.$where['operator'].' ('.$values.')';
-    }
-
-    /**
-     * Compile a "where JSON contains" clause.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $where
-     * @return string
-     */
-    protected function whereJsonContains(Builder $query, $where)
-    {
-        $not = $where['not'] ? 'not ' : '';
-
-        return $not.$this->compileJsonContains(
-            $this->wrap($where['column']), $this->parameter($where['value'])
-        );
-    }
-
-    /**
-     * Compile a "JSON contains" statement into SQL.
-     *
-     * @param  string  $column
-     * @param  string  $value
-     * @return string
-     * @throws \RuntimeException
-     */
-    protected function compileJsonContains($column, $value)
-    {
-        throw new RuntimeException('This database engine does not support JSON contains operations.');
-    }
-
-    /**
      * Compile the "group by" portions of the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -686,9 +641,9 @@ class Grammar extends BaseGrammar
      */
     protected function compileUnion(array $union)
     {
-        $conjunction = $union['all'] ? ' union all ' : ' union ';
+        $conjuction = $union['all'] ? ' union all ' : ' union ';
 
-        return $conjunction.$union['query']->toSql();
+        return $conjuction.$union['query']->toSql();
     }
 
     /**

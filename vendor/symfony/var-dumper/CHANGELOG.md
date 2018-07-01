@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 4.1.0
 -----
 
@@ -20,6 +21,8 @@ CHANGELOG
  * the `VarDumperTestTrait::assertDumpMatchesFormat()` method expects a 3rd `$context = null`
    argument and moves `$message = ''` argument at 4th position.
 
+=======
+>>>>>>> dashboard-test
 3.4.0
 -----
 

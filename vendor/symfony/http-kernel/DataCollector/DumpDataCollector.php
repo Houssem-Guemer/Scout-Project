@@ -41,7 +41,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
     private $dumperIsInjected;
     private $sourceContextProvider;
 
-    public function __construct(Stopwatch $stopwatch = null, $fileLinkFormat = null, string $charset = null, RequestStack $requestStack = null, DataDumperInterface $dumper = null)
+    public function __construct(Stopwatch $stopwatch = null, $fileLinkFormat = null, $charset = null, RequestStack $requestStack = null, DataDumperInterface $dumper = null)
     {
         $this->stopwatch = $stopwatch;
         $this->fileLinkFormat = $fileLinkFormat ?: ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format');
@@ -71,7 +71,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
         if ($this->stopwatch) {
             $this->stopwatch->start('dump');
         }
-        if ($this->isCollected && !$this->dumper) {
+        if ($this->isCollected) {
             $this->isCollected = false;
         }
 
@@ -203,9 +203,15 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
                 --$i;
             }
 
+<<<<<<< HEAD
             if (!\in_array(PHP_SAPI, array('cli', 'phpdbg'), true) && stripos($h[$i], 'html')) {
                 $dumper = new HtmlDumper('php://output', $this->charset);
                 $dumper->setDisplayOptions(array('fileLinkFormat' => $this->fileLinkFormat));
+=======
+            if ('cli' !== PHP_SAPI && stripos($h[$i], 'html')) {
+                $this->dumper = new HtmlDumper('php://output', $this->charset);
+                $this->dumper->setDisplayOptions(array('fileLinkFormat' => $this->fileLinkFormat));
+>>>>>>> dashboard-test
             } else {
                 $dumper = new CliDumper('php://output', $this->charset);
             }

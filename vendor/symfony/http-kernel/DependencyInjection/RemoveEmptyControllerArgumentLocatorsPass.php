@@ -23,7 +23,11 @@ class RemoveEmptyControllerArgumentLocatorsPass implements CompilerPassInterface
 {
     private $controllerLocator;
 
+<<<<<<< HEAD
     public function __construct(string $controllerLocator = 'argument_resolver.controller_locator')
+=======
+    public function __construct($resolverServiceId = 'argument_resolver.service')
+>>>>>>> dashboard-test
     {
         $this->controllerLocator = $controllerLocator;
     }

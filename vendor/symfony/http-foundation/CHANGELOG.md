@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 4.1.0
 -----
 
@@ -39,6 +40,8 @@ CHANGELOG
    `NativeSessionStorage::setSaveHandler()` is not supported anymore and throws a
    `\TypeError`
 
+=======
+>>>>>>> dashboard-test
 3.4.0
 -----
 

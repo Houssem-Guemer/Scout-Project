@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 4.1.0
 -----
 
@@ -25,6 +26,8 @@ CHANGELOG
  * passing a not existing working directory to the constructor of the `Symfony\Component\Process\Process` class is not
    supported anymore
 
+=======
+>>>>>>> dashboard-test
 3.4.0
 -----
 

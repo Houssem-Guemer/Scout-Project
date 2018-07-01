@@ -40,15 +40,9 @@ final class ServiceValueResolver implements ArgumentValueResolverInterface
 
         if (\is_array($controller) && \is_callable($controller, true) && \is_string($controller[0])) {
             $controller = $controller[0].'::'.$controller[1];
-        } elseif (!\is_string($controller) || '' === $controller) {
-            return false;
         }
 
-        if ('\\' === $controller[0]) {
-            $controller = ltrim($controller, '\\');
-        }
-
-        return $this->container->has($controller) && $this->container->get($controller)->has($argument->getName());
+        return \is_string($controller) && $this->container->has($controller) && $this->container->get($controller)->has($argument->getName());
     }
 
     /**
@@ -60,6 +54,7 @@ final class ServiceValueResolver implements ArgumentValueResolverInterface
             $controller = $controller[0].'::'.$controller[1];
         }
 
+<<<<<<< HEAD
         if ('\\' === $controller[0]) {
             $controller = ltrim($controller, '\\');
         }
@@ -80,5 +75,8 @@ final class ServiceValueResolver implements ArgumentValueResolverInterface
 
             throw $e;
         }
+=======
+        yield $this->container->get($controller)->get($argument->getName());
+>>>>>>> dashboard-test
     }
 }

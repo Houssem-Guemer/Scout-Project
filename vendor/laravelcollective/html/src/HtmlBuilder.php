@@ -94,7 +94,11 @@ class HtmlBuilder
     {
         $defaults = ['media' => 'all', 'type' => 'text/css', 'rel' => 'stylesheet'];
 
+<<<<<<< HEAD
         $attributes = array_merge($defaults, $attributes);
+=======
+        $attributes = array_merge($attributes, $defaults);
+>>>>>>> dashboard-test
 
         $attributes['href'] = $this->url->asset($url, $secure);
 
@@ -387,7 +391,11 @@ class HtmlBuilder
         if (is_array($value)) {
             return $this->nestedListing($key, $type, $value);
         } else {
+<<<<<<< HEAD
             return '<li>' . e($value, false) . '</li>';
+=======
+            return '<li>' . e($value) . '</li>';
+>>>>>>> dashboard-test
         }
     }
 
@@ -455,12 +463,17 @@ class HtmlBuilder
             return $value ? $key : '';
         }
 
+<<<<<<< HEAD
         if (is_array($value) && $key === 'class') {
             return 'class="' . implode(' ', $value) . '"';
         }
 
         if (! is_null($value)) {
             return $key . '="' . e($value, false) . '"';
+=======
+        if (! is_null($value)) {
+            return $key . '="' . e($value) . '"';
+>>>>>>> dashboard-test
         }
     }
 

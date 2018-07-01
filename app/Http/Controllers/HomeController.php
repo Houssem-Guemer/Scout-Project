@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use View;
+use App\Foo;
 
 class HomeController extends Controller
 {
@@ -11,10 +14,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    protected $foo;
+	public function __construct(Foo $foo)
+	{		 
+	   $this->foo = $foo;
+	   
     }
+	
 
     /**
      * Show the application dashboard.

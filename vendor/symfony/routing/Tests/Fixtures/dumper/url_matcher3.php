@@ -58,6 +58,7 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Matcher\UrlMatcher
                 return $ret;
         }
 
+<<<<<<< HEAD
         $matchedPathinfo = $pathinfo;
         $regexList = array(
             0 => '{^(?'
@@ -108,5 +109,8 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Matcher\UrlMatcher
         }
 
         throw $allow ? new MethodNotAllowedException(array_keys($allow)) : new ResourceNotFoundException();
+=======
+        throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
+>>>>>>> dashboard-test
     }
 }

@@ -53,7 +53,13 @@ class ContainerControllerResolver extends ControllerResolver
 
         try {
             return parent::instantiateController($class);
+<<<<<<< HEAD
         } catch (\Error $e) {
+=======
+        } catch (\ArgumentCountError $e) {
+        } catch (\ErrorException $e) {
+        } catch (\TypeError $e) {
+>>>>>>> dashboard-test
         }
 
         $this->throwExceptionIfControllerWasRemoved($class, $e);

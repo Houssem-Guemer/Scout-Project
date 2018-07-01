@@ -193,10 +193,11 @@ EOF
             }
         }
 
-        // used to display the Welcome Page in apps that don't define a homepage
-        $code .= "        if ('/' === \$pathinfo && !\$allow) {\n";
-        $code .= "            throw new Symfony\Component\Routing\Exception\NoConfigurationException();\n";
-        $code .= "        }\n";
+        if ('' === $code) {
+            $code .= "        if ('/' === \$pathinfo) {\n";
+            $code .= "            throw new Symfony\Component\Routing\Exception\NoConfigurationException();\n";
+            $code .= "        }\n";
+        }
 
         return $code;
     }
@@ -691,9 +692,15 @@ EOF;
 EOF;
             }
         } elseif ($methods) {
+<<<<<<< HEAD
             $code .= <<<EOF
             if (!isset((\$a = {$methods})[{$methodVariable}])) {
                 \$allow += \$a;
+=======
+                $code .= <<<EOF
+            if (!in_array($methodVariable, array('$methods'))) {
+                \$allow = array_merge(\$allow, array('$methods'));
+>>>>>>> dashboard-test
                 goto $gotoname;
             }
 

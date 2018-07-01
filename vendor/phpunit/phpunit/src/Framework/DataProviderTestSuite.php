@@ -19,7 +19,7 @@ class DataProviderTestSuite extends TestSuite
     /**
      * @param string[] $dependencies
      */
-    public function setDependencies(array $dependencies): void
+    public function setDependencies(array $dependencies)
     {
         $this->dependencies = $dependencies;
 

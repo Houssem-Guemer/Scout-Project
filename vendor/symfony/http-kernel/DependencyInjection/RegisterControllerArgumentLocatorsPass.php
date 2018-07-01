@@ -35,7 +35,11 @@ class RegisterControllerArgumentLocatorsPass implements CompilerPassInterface
     private $controllerTag;
     private $controllerLocator;
 
+<<<<<<< HEAD
     public function __construct(string $resolverServiceId = 'argument_resolver.service', string $controllerTag = 'controller.service_arguments', string $controllerLocator = 'argument_resolver.controller_locator')
+=======
+    public function __construct($resolverServiceId = 'argument_resolver.service', $controllerTag = 'controller.service_arguments')
+>>>>>>> dashboard-test
     {
         $this->resolverServiceId = $resolverServiceId;
         $this->controllerTag = $controllerTag;
