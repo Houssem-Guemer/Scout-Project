@@ -20,11 +20,7 @@ class Count extends Constraint
     /**
      * @var int
      */
-<<<<<<< HEAD
-    private $expectedCount;
-=======
     protected $expectedCount = 0;
->>>>>>> dashboard-test
 
     /**
      * @param int $expected

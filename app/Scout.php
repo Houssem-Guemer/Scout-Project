@@ -3,26 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\DB;
->>>>>>> dashboard-test
 
 class Scout extends Model
 {
     protected $table = 'scouts';
-<<<<<<< HEAD
-    protected $primaryKey = 'assurance_num';
-
-    protected $fillable = [
-        'assurance_num', 'first_name', 'last_name', 'date_of_birth', 'place_of_birth',
-        'membership_date', 'email', 'phone_number'
-    ];
-
-    protected $hidden = [
-        'assurance_num'
-    ];
-=======
     protected $primaryKey = 'scout_id';
     public $timestamps = false;
     protected $membership_date;
@@ -34,7 +19,6 @@ class Scout extends Model
 
     public function __construct(array $attributes = []){
         parent::__construct($attributes);
->>>>>>> dashboard-test
 
         do{
             $id = mt_rand(10000, 99999);
@@ -43,8 +27,6 @@ class Scout extends Model
 
         $this->scout_id = $id;
     }
-<<<<<<< HEAD
-=======
 
     private function getYear(){
         $date = $this->attributes['membership_date'];
@@ -69,5 +51,4 @@ class Scout extends Model
     public function getRegistrationNumber(){
         return 'SF-'.substr($this->getYear(), 2, 2).$this->scout_id;
     }
->>>>>>> dashboard-test
 }

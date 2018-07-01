@@ -291,13 +291,8 @@ block_or_error:
 ;
 
 function_declaration_statement:
-<<<<<<< HEAD
-    T_FUNCTION optional_ref identifier '(' parameter_list ')' optional_return_type block_or_error
-        { $$ = Stmt\Function_[$3, ['byRef' => $2, 'params' => $5, 'returnType' => $7, 'stmts' => $8]]; }
-=======
     T_FUNCTION optional_ref T_STRING '(' parameter_list ')' optional_return_type '{' inner_statement_list '}'
         { $$ = Stmt\Function_[$3, ['byRef' => $2, 'params' => $5, 'returnType' => $7, 'stmts' => $9]]; }
->>>>>>> dashboard-test
 ;
 
 class_declaration_statement:
@@ -443,19 +438,10 @@ non_empty_parameter_list:
 ;
 
 parameter:
-<<<<<<< HEAD
-      optional_param_type optional_ref optional_ellipsis plain_variable
-          { $$ = Node\Param[$4, null, $1, $2, $3]; $this->checkParam($$); }
-    | optional_param_type optional_ref optional_ellipsis plain_variable '=' expr
-          { $$ = Node\Param[$4, $6, $1, $2, $3]; $this->checkParam($$); }
-    | optional_param_type optional_ref optional_ellipsis error
-          { $$ = Node\Param[Expr\Error[], null, $1, $2, $3]; }
-=======
       optional_param_type optional_ref optional_ellipsis T_VARIABLE
           { $$ = Node\Param[parseVar($4), null, $1, $2, $3]; $this->checkParam($$); }
     | optional_param_type optional_ref optional_ellipsis T_VARIABLE '=' expr
           { $$ = Node\Param[parseVar($4), $6, $1, $2, $3]; $this->checkParam($$); }
->>>>>>> dashboard-test
 ;
 
 type_expr:

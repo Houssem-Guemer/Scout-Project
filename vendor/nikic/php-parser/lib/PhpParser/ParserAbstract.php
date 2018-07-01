@@ -117,10 +117,7 @@ abstract class ParserAbstract implements Parser
      */
     public function __construct(Lexer $lexer, array $options = array()) {
         $this->lexer = $lexer;
-<<<<<<< HEAD
-=======
         $this->errors = array();
->>>>>>> dashboard-test
 
         if (isset($options['throwOnError'])) {
             throw new \LogicException(

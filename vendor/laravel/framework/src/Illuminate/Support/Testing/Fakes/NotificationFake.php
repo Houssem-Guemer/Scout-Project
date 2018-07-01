@@ -174,13 +174,7 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
         }
 
         foreach ($notifiables as $notifiable) {
-<<<<<<< HEAD
-            if (! $notification->id) {
-                $notification->id = Str::uuid()->toString();
-            }
-=======
             $notification->id = Uuid::uuid4()->toString();
->>>>>>> dashboard-test
 
             $this->notifications[get_class($notifiable)][$notifiable->getKey()][get_class($notification)][] = [
                 'notification' => $notification,

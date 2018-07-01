@@ -53,13 +53,8 @@ class Printer
 
                     $this->out = \fsockopen($out[0], $out[1]);
                 } else {
-<<<<<<< HEAD
-                    if (\strpos($out, 'php://') === false && !$this->createDirectory(\dirname($out))) {
-                        throw new Exception(\sprintf('Directory "%s" was not created', \dirname($out)));
-=======
                     if (\strpos($out, 'php://') === false && !\is_dir(\dirname($out))) {
                         \mkdir(\dirname($out), 0777, true);
->>>>>>> dashboard-test
                     }
 
                     $this->out = \fopen($out, 'wt');

@@ -379,14 +379,7 @@ class TestCaseTest extends TestCase
         $this->assertEquals('ii', $GLOBALS['i']);
     }
 
-<<<<<<< HEAD
-    /**
-     * @depends testGlobalsBackupPre
-     */
-    public function testGlobalsBackupPost(): void
-=======
     public function testGlobalsBackupPost()
->>>>>>> dashboard-test
     {
         global $a;
         global $i;

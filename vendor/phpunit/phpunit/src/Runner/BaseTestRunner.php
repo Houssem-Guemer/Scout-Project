@@ -21,17 +21,6 @@ use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
  */
 abstract class BaseTestRunner
 {
-<<<<<<< HEAD
-    public const STATUS_UNKNOWN    = -1;
-    public const STATUS_PASSED     = 0;
-    public const STATUS_SKIPPED    = 1;
-    public const STATUS_INCOMPLETE = 2;
-    public const STATUS_FAILURE    = 3;
-    public const STATUS_ERROR      = 4;
-    public const STATUS_RISKY      = 5;
-    public const STATUS_WARNING    = 6;
-    public const SUITE_METHODNAME  = 'suite';
-=======
     const STATUS_PASSED     = 0;
     const STATUS_SKIPPED    = 1;
     const STATUS_INCOMPLETE = 2;
@@ -40,7 +29,6 @@ abstract class BaseTestRunner
     const STATUS_RISKY      = 5;
     const STATUS_WARNING    = 6;
     const SUITE_METHODNAME  = 'suite';
->>>>>>> dashboard-test
 
     /**
      * Returns the loader to be used.

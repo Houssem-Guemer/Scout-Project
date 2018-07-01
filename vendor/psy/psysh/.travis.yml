@@ -16,21 +16,11 @@ matrix:
   allow_failures:
     - php: hhvm
 
-<<<<<<< HEAD
-script:
- - vendor/bin/phpunit --verbose --coverage-clover=coverage.xml
- - '[[ $TRAVIS_PHP_VERSION = 7.2* ]] && make build -j 4 || true'
-=======
 install: travis_retry composer update --no-interaction
->>>>>>> dashboard-test
 
 script: vendor/bin/phpunit --verbose
 
-<<<<<<< HEAD
-before_deploy: make dist -j 4
-=======
 before_deploy: bin/package -v $TRAVIS_TAG
->>>>>>> dashboard-test
 
 deploy:
   provider: releases

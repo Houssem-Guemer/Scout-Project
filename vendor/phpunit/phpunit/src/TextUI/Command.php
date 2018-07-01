@@ -34,12 +34,7 @@ use PHPUnit\Util\TestDox\TextResultPrinter;
 use PHPUnit\Util\TextTestListRenderer;
 use PHPUnit\Util\XmlTestListRenderer;
 use ReflectionClass;
-<<<<<<< HEAD
-use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
-
-=======
 use SebastianBergmann\CodeCoverage\Report\PHP;
->>>>>>> dashboard-test
 use Throwable;
 
 /**
@@ -149,13 +144,7 @@ class Command
     private $versionStringPrinted = false;
 
     /**
-<<<<<<< HEAD
-     * @throws \RuntimeException
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \InvalidArgumentException
-=======
      * @param bool $exit
->>>>>>> dashboard-test
      */
     public static function main($exit = true)
     {

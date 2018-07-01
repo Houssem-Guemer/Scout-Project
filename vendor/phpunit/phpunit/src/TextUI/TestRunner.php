@@ -177,19 +177,11 @@ class TestRunner extends BaseTestRunner
     }
 
     /**
-<<<<<<< HEAD
-     * @throws \PHPUnit\Runner\Exception
-     * @throws Exception
-     * @throws \InvalidArgumentException
-     * @throws \RuntimeException
-     * @throws \ReflectionException
-=======
      * @param Test  $suite
      * @param array $arguments
      * @param bool  $exit
      *
      * @return TestResult
->>>>>>> dashboard-test
      */
     public function doRun(Test $suite, array $arguments = [], $exit = true)
     {
@@ -973,43 +965,6 @@ class TestRunner extends BaseTestRunner
                 $arguments['excludeGroups'] = \array_diff($groupConfiguration['exclude'], $groupCliArgs);
             }
 
-<<<<<<< HEAD
-            foreach ($arguments['configuration']->getExtensionConfiguration() as $extension) {
-                if (!\class_exists($extension['class'], false) && $extension['file'] !== '') {
-                    require_once $extension['file'];
-                }
-
-                if (!\class_exists($extension['class'])) {
-                    throw new Exception(
-                        \sprintf(
-                            'Class "%s" does not exist',
-                            $extension['class']
-                        )
-                    );
-                }
-
-                $extensionClass = new ReflectionClass($extension['class']);
-
-                if (!$extensionClass->implementsInterface(Hook::class)) {
-                    throw new Exception(
-                        \sprintf(
-                            'Class "%s" does not implement a PHPUnit\Runner\Hook interface',
-                            $extension['class']
-                        )
-                    );
-                }
-
-                if (\count($extension['arguments']) == 0) {
-                    $this->extensions[] = $extensionClass->newInstance();
-                } else {
-                    $this->extensions[] = $extensionClass->newInstanceArgs(
-                        $extension['arguments']
-                    );
-                }
-            }
-
-=======
->>>>>>> dashboard-test
             foreach ($arguments['configuration']->getListenerConfiguration() as $listener) {
                 if (!\class_exists($listener['class'], false) &&
                     $listener['file'] !== '') {

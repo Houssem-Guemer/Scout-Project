@@ -32,11 +32,7 @@ class IsType extends Constraint
     /**
      * @var array
      */
-<<<<<<< HEAD
-    private const KNOWN_TYPES = [
-=======
     protected $types = [
->>>>>>> dashboard-test
         'array'    => true,
         'boolean'  => true,
         'bool'     => true,

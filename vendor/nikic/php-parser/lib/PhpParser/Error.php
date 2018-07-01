@@ -14,13 +14,8 @@ class Error extends \RuntimeException
      * @param array|int $attributes Attributes of node/token where error occurred
      *                              (or start line of error -- deprecated)
      */
-<<<<<<< HEAD
-    public function __construct(string $message, $attributes = []) {
-        $this->rawMessage = $message;
-=======
     public function __construct($message, $attributes = array()) {
         $this->rawMessage = (string) $message;
->>>>>>> dashboard-test
         if (is_array($attributes)) {
             $this->attributes = $attributes;
         } else {
@@ -81,13 +76,8 @@ class Error extends \RuntimeException
      *
      * @param string $message Error message
      */
-<<<<<<< HEAD
-    public function setRawMessage(string $message) {
-        $this->rawMessage = $message;
-=======
     public function setRawMessage($message) {
         $this->rawMessage = (string) $message;
->>>>>>> dashboard-test
         $this->updateMessage();
     }
 
@@ -96,13 +86,8 @@ class Error extends \RuntimeException
      *
      * @param int $line Error start line
      */
-<<<<<<< HEAD
-    public function setStartLine(int $line) {
-        $this->attributes['startLine'] = $line;
-=======
     public function setStartLine($line) {
         $this->attributes['startLine'] = (int) $line;
->>>>>>> dashboard-test
         $this->updateMessage();
     }
 

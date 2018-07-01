@@ -534,29 +534,6 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
-<<<<<<< HEAD
-     * Invalidate other sessions for the current user.
-     *
-     * The application must be using the AuthenticateSession middleware.
-     *
-     * @param  string  $password
-     * @param  string  $attribute
-     * @return null|bool
-     */
-    public function logoutOtherDevices($password, $attribute = 'password')
-    {
-        if (! $this->user()) {
-            return;
-        }
-
-        return tap($this->user()->forceFill([
-            $attribute => Hash::make($password),
-        ]))->save();
-    }
-
-    /**
-=======
->>>>>>> dashboard-test
      * Register an authentication attempt event listener.
      *
      * @param  mixed  $callback

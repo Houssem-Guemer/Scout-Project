@@ -582,29 +582,10 @@ class ArtisanServiceProvider extends ServiceProvider
      *
      * @return void
      */
-<<<<<<< HEAD
-    protected function registerNotificationTableCommand()
-    {
-        $this->app->singleton('command.notification.table', function ($app) {
-            return new NotificationTableCommand($app['files'], $app['composer']);
-        });
-    }
-
-    /**
-     * Register the command.
-     *
-     * @return void
-     */
-    protected function registerObserverMakeCommand()
-    {
-        $this->app->singleton('command.observer.make', function ($app) {
-            return new ObserverMakeCommand($app['files']);
-=======
     protected function registerOptimizeCommand()
     {
         $this->app->singleton('command.optimize', function ($app) {
             return new OptimizeCommand($app['composer']);
->>>>>>> dashboard-test
         });
     }
 

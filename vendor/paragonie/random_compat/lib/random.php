@@ -203,12 +203,7 @@ if (!is_callable('random_bytes')) {
          * and hope the developer won't let it fail silently.
          *
          * @param mixed $length
-<<<<<<< HEAD
-         * @psalm-suppress MissingReturnType
-         * @psalm-suppress InvalidReturnType
-=======
          * @return void
->>>>>>> dashboard-test
          * @throws Exception
          */
         function random_bytes($length)

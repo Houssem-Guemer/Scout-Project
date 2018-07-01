@@ -3,18 +3,8 @@ class Issue2137Test extends PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider provideBrandService
-<<<<<<< HEAD
-     *
-     * @param mixed $provided
-     * @param mixed $expected
-     *
-     * @throws Exception
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-=======
      * @param $provided
      * @param $expected
->>>>>>> dashboard-test
      */
     public function testBrandService($provided, $expected)
     {
@@ -33,18 +23,8 @@ class Issue2137Test extends PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider provideBrandService
-<<<<<<< HEAD
-     *
-     * @param mixed $provided
-     * @param mixed $expected
-     *
-     * @throws Exception
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-=======
      * @param $provided
      * @param $expected
->>>>>>> dashboard-test
      */
     public function testSomethingElseInvalid($provided, $expected)
     {

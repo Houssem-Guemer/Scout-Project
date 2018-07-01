@@ -218,82 +218,11 @@ class Configuration
      *
      * @return string
      */
-<<<<<<< HEAD
-    private function __construct(string $filename)
-    {
-        $this->filename = $filename;
-        $this->document = Xml::loadFile($filename, false, true, true);
-        $this->xpath    = new DOMXPath($this->document);
-
-        $this->validateConfigurationAgainstSchema();
-    }
-
-    /**
-     * @codeCoverageIgnore
-     */
-    private function __clone()
-    {
-    }
-
-    public function hasValidationErrors(): bool
-    {
-        return \count($this->errors) > 0;
-    }
-
-    public function getValidationErrors(): array
-    {
-        $result = [];
-
-        foreach ($this->errors as $error) {
-            if (!isset($result[$error->line])) {
-                $result[$error->line] = [];
-            }
-            $result[$error->line][] = \trim($error->message);
-        }
-
-        return $result;
-    }
-
-    /**
-     * Returns the real path to the configuration file.
-     */
-    public function getFilename(): string
-=======
     public function getFilename()
->>>>>>> dashboard-test
     {
         return $this->filename;
     }
 
-<<<<<<< HEAD
-    public function getExtensionConfiguration(): array
-    {
-        $result = [];
-
-        foreach ($this->xpath->query('extensions/extension') as $extension) {
-            /** @var DOMElement $extension */
-            $class     = (string) $extension->getAttribute('class');
-            $file      = '';
-            $arguments = $this->getConfigurationArguments($extension->childNodes);
-
-            if ($extension->getAttribute('file')) {
-                $file = $this->toAbsolutePath(
-                    (string) $extension->getAttribute('file'),
-                    true
-                );
-            }
-            $result[] = [
-                'class'     => $class,
-                'file'      => $file,
-                'arguments' => $arguments
-            ];
-        }
-
-        return $result;
-    }
-
-=======
->>>>>>> dashboard-test
     /**
      * Returns the configuration for SUT filtering.
      *
@@ -426,8 +355,6 @@ class Configuration
                 );
             }
 
-<<<<<<< HEAD
-=======
             foreach ($listener->childNodes as $node) {
                 if ($node instanceof DOMElement && $node->tagName == 'arguments') {
                     foreach ($node->childNodes as $argument) {
@@ -442,7 +369,6 @@ class Configuration
                 }
             }
 
->>>>>>> dashboard-test
             $result[] = [
                 'class'     => $class,
                 'file'      => $file,
@@ -1120,13 +1046,8 @@ class Configuration
             }
         }
 
-<<<<<<< HEAD
-        $fileIteratorFacade = new FileIteratorFacade;
-        $testSuiteFilter    = $testSuiteFilter ? \explode(',', $testSuiteFilter) : [];
-=======
         $fileIteratorFacade = new File_Iterator_Facade;
         $testSuiteFilter    = $testSuiteFilter ? \explode(self::TEST_SUITE_FILTER_SEPARATOR, $testSuiteFilter) : [];
->>>>>>> dashboard-test
 
         foreach ($testSuiteNode->getElementsByTagName('directory') as $directoryNode) {
             if (!empty($testSuiteFilter) && !\in_array($directoryNode->parentNode->getAttribute('name'), $testSuiteFilter)) {

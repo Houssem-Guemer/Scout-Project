@@ -32,11 +32,7 @@ class Version
         }
 
         if (self::$version === null) {
-<<<<<<< HEAD
-            $version       = new VersionId('7.2.4', \dirname(__DIR__, 2));
-=======
             $version       = new VersionId('6.5.7', \dirname(\dirname(__DIR__)));
->>>>>>> dashboard-test
             self::$version = $version->getVersion();
         }
 

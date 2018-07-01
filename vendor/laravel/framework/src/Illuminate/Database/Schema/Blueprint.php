@@ -119,10 +119,6 @@ class Blueprint
     /**
      * Add the commands that are implied by the blueprint's state.
      *
-<<<<<<< HEAD
-     * @param  \Illuminate\Database\Schema\Grammars\Grammar  $grammar
-=======
->>>>>>> dashboard-test
      * @return void
      */
     protected function addImpliedCommands()
@@ -169,34 +165,6 @@ class Blueprint
     }
 
     /**
-<<<<<<< HEAD
-     * Add the fluent commands specified on any columns.
-     *
-     * @param  \Illuminate\Database\Schema\Grammars\Grammar  $grammar
-     * @return void
-     */
-    public function addFluentCommands(Grammar $grammar)
-    {
-        foreach ($this->columns as $column) {
-            foreach ($grammar->getFluentCommands() as $commandName) {
-                $attributeName = lcfirst($commandName);
-
-                if (! isset($column->{$attributeName})) {
-                    continue;
-                }
-
-                $value = $column->{$attributeName};
-
-                $this->addCommand(
-                    $commandName, compact('value', 'column')
-                );
-            }
-        }
-    }
-
-    /**
-=======
->>>>>>> dashboard-test
      * Determine if the blueprint has a create command.
      *
      * @return bool

@@ -479,52 +479,6 @@ class Grammar extends BaseGrammar
     }
 
     /**
-<<<<<<< HEAD
-     * Compile a where row values condition.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $where
-     * @return string
-     */
-    protected function whereRowValues(Builder $query, $where)
-    {
-        $values = $this->parameterize($where['values']);
-
-        return '('.implode(', ', $where['columns']).') '.$where['operator'].' ('.$values.')';
-    }
-
-    /**
-     * Compile a "where JSON contains" clause.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $where
-     * @return string
-     */
-    protected function whereJsonContains(Builder $query, $where)
-    {
-        $not = $where['not'] ? 'not ' : '';
-
-        return $not.$this->compileJsonContains(
-            $this->wrap($where['column']), $this->parameter($where['value'])
-        );
-    }
-
-    /**
-     * Compile a "JSON contains" statement into SQL.
-     *
-     * @param  string  $column
-     * @param  string  $value
-     * @return string
-     * @throws \RuntimeException
-     */
-    protected function compileJsonContains($column, $value)
-    {
-        throw new RuntimeException('This database engine does not support JSON contains operations.');
-    }
-
-    /**
-=======
->>>>>>> dashboard-test
      * Compile the "group by" portions of the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query

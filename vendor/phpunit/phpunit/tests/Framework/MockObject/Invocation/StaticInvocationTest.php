@@ -96,22 +96,4 @@ class StaticInvocationTest extends TestCase
 
         $this->assertSame($expectedReturnType, $invocation->getReturnType());
     }
-<<<<<<< HEAD:vendor/phpunit/phpunit/tests/Framework/MockObject/Invocation/StaticInvocationTest.php
-
-    public function testToStringWillReturnEmptyString(): void
-    {
-        $expectedReturnType = 'string';
-
-        $invocation = new StaticInvocation(
-            'FooClass',
-            '__toString',
-            [],
-            ''
-        );
-
-        $this->assertSame($expectedReturnType, $invocation->getReturnType());
-        $this->assertSame('', $invocation->generateReturnValue());
-    }
-=======
->>>>>>> dashboard-test:vendor/phpunit/phpunit-mock-objects/tests/Invocation/StaticInvocationTest.php
 }

@@ -146,9 +146,6 @@ class ResultPrinter extends Printer implements TestListener
     {
         parent::__construct($out);
 
-<<<<<<< HEAD
-        if (!\in_array($colors, self::AVAILABLE_COLORS, true)) {
-=======
         if (!\is_bool($verbose)) {
             throw InvalidArgumentHelper::factory(2, 'boolean');
         }
@@ -156,7 +153,6 @@ class ResultPrinter extends Printer implements TestListener
         $availableColors = [self::COLOR_NEVER, self::COLOR_AUTO, self::COLOR_ALWAYS];
 
         if (!\in_array($colors, $availableColors)) {
->>>>>>> dashboard-test
             throw InvalidArgumentHelper::factory(
                 3,
                 \vsprintf('value from "%s", "%s" or "%s"', self::AVAILABLE_COLORS)
@@ -213,134 +209,11 @@ class ResultPrinter extends Printer implements TestListener
         $this->printFooter($result);
     }
 
-<<<<<<< HEAD
-    /**
-     * An error occurred.
-     */
-    public function addError(Test $test, \Throwable $t, float $time): void
-    {
-        $this->writeProgressWithColor('fg-red, bold', 'E');
-        $this->lastTestFailed = true;
-    }
-
-    /**
-     * A failure occurred.
-     */
-    public function addFailure(Test $test, AssertionFailedError $e, float $time): void
-    {
-        $this->writeProgressWithColor('bg-red, fg-white', 'F');
-        $this->lastTestFailed = true;
-    }
-
-    /**
-     * A warning occurred.
-     */
-    public function addWarning(Test $test, Warning $e, float $time): void
-    {
-        $this->writeProgressWithColor('fg-yellow, bold', 'W');
-        $this->lastTestFailed = true;
-    }
-
-    /**
-     * Incomplete test.
-     */
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
-    {
-        $this->writeProgressWithColor('fg-yellow, bold', 'I');
-        $this->lastTestFailed = true;
-    }
-
-    /**
-     * Risky test.
-     */
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
-    {
-        $this->writeProgressWithColor('fg-yellow, bold', 'R');
-        $this->lastTestFailed = true;
-    }
-
-=======
->>>>>>> dashboard-test
     /**
      * @param array  $defects
      * @param string $type
      */
-<<<<<<< HEAD
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
-    {
-        $this->writeProgressWithColor('fg-cyan, bold', 'S');
-        $this->lastTestFailed = true;
-    }
-
-    /**
-     * A testsuite started.
-     */
-    public function startTestSuite(TestSuite $suite): void
-    {
-        if ($this->numTests == -1) {
-            $this->numTests      = \count($suite);
-            $this->numTestsWidth = \strlen((string) $this->numTests);
-            $this->maxColumn     = $this->numberOfColumns - \strlen('  /  (XXX%)') - (2 * $this->numTestsWidth);
-        }
-    }
-
-    /**
-     * A testsuite ended.
-     */
-    public function endTestSuite(TestSuite $suite): void
-    {
-    }
-
-    /**
-     * A test started.
-     */
-    public function startTest(Test $test): void
-    {
-        if ($this->debug) {
-            $this->write(
-                \sprintf(
-                    "Test '%s' started\n",
-                    \PHPUnit\Util\Test::describeAsString($test)
-                )
-            );
-        }
-    }
-
-    /**
-     * A test ended.
-     */
-    public function endTest(Test $test, float $time): void
-    {
-        if ($this->debug) {
-            $this->write(
-                \sprintf(
-                    "Test '%s' ended\n",
-                    \PHPUnit\Util\Test::describeAsString($test)
-                )
-            );
-        }
-
-        if (!$this->lastTestFailed) {
-            $this->writeProgress('.');
-        }
-
-        if ($test instanceof TestCase) {
-            $this->numAssertions += $test->getNumAssertions();
-        } elseif ($test instanceof PhptTestCase) {
-            $this->numAssertions++;
-        }
-
-        $this->lastTestFailed = false;
-
-        if ($test instanceof TestCase && !$test->hasExpectationOnOutput()) {
-            $this->write($test->getActualOutput());
-        }
-    }
-
-    protected function printDefects(array $defects, string $type): void
-=======
     protected function printDefects(array $defects, $type)
->>>>>>> dashboard-test
     {
         $count = \count($defects);
 

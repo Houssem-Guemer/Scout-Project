@@ -248,13 +248,7 @@ class ValidationRuleParser
      */
     protected static function parseParameters($rule, $parameter)
     {
-<<<<<<< HEAD
-        $rule = strtolower($rule);
-
-        if ($rule === 'regex' || $rule === 'not_regex' || $rule === 'notregex') {
-=======
         if (strtolower($rule) == 'regex') {
->>>>>>> dashboard-test
             return [$parameter];
         }
 

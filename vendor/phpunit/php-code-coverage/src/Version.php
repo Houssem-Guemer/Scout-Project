@@ -22,11 +22,7 @@ class Version
     public static function id()
     {
         if (self::$version === null) {
-<<<<<<< HEAD
-            $version       = new VersionId('6.0.7', \dirname(__DIR__));
-=======
             $version       = new VersionId('5.3.0', \dirname(__DIR__));
->>>>>>> dashboard-test
             self::$version = $version->getVersion();
         }
 

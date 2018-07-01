@@ -72,71 +72,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals(ResultPrinter::COLOR_NEVER, $configurationValues['colors']);
     }
 
-<<<<<<< HEAD
-    public function testInvalidConfigurationGeneratesValidationErrors(): void
-    {
-        $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.colors.invalid.xml';
-        $configurationInstance = Configuration::getInstance($configurationFilename);
-
-        $this->assertTrue($configurationInstance->hasValidationErrors());
-        $this->assertArraySubset([1 => ["Element 'phpunit', attribute 'colors': 'Something else' is not a valid value of the atomic type 'xs:boolean'."]], $configurationInstance->getValidationErrors());
-    }
-
-    public function testNonIntegerValueReturnsDefault(): void
-    {
-        $configurationFilename =  \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'configuration.columns.default.xml';
-        $configurationInstance = Configuration::getInstance($configurationFilename);
-        $configurationValues   = $configurationInstance->getPHPUnitConfiguration();
-
-        $this->assertEquals(80, $configurationValues['columns']);
-    }
-
-    /**
-     * @dataProvider configurationRootOptionsProvider
-     *
-     * @param bool|int|string $expected
-     */
-    public function testConfigurationRootOptions(string $optionName, string $optionValue, $expected): void
-    {
-        $tmpFilename = \sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'phpunit.' . $optionName . \uniqid() . '.xml';
-        $xml         = "<phpunit $optionName='$optionValue'></phpunit>" . PHP_EOL;
-        \file_put_contents($tmpFilename, $xml);
-
-        $configurationInstance = Configuration::getInstance($tmpFilename);
-        $this->assertFalse($configurationInstance->hasValidationErrors(), 'option causes validation error');
-
-        $configurationValues   = $configurationInstance->getPHPUnitConfiguration();
-        $this->assertEquals($expected, $configurationValues[$optionName]);
-
-        @\unlink($tmpFilename);
-    }
-
-    public function configurationRootOptionsProvider(): array
-    {
-        return [
-            ['executionOrder', 'default', TestSuiteSorter::ORDER_DEFAULT],
-            ['executionOrder', 'random', TestSuiteSorter::ORDER_RANDOMIZED],
-            ['executionOrder', 'reverse', TestSuiteSorter::ORDER_REVERSED],
-            ['columns', 'max', 'max'],
-            ['stopOnFailure', 'true', true],
-            ['stopOnWarning', 'true', true],
-            ['stopOnIncomplete', 'true', true],
-            ['stopOnRisky', 'true', true],
-            ['stopOnSkipped', 'true', true],
-            ['failOnWarning', 'true', true],
-            ['failOnRisky', 'true', true],
-            ['disableCodeCoverageIgnore', 'true', true],
-            ['processIsolation', 'true', true],
-            ['testSuiteLoaderFile', '/path/to/file', '/path/to/file'],
-            ['reverseDefectList', 'true', true],
-            ['registerMockObjectsFromTestArgumentsRecursively', 'true', true],
-        ];
-    }
-
-    public function testFilterConfigurationIsReadCorrectly(): void
-=======
     public function testFilterConfigurationIsReadCorrectly()
->>>>>>> dashboard-test
     {
         $this->assertEquals(
             [
@@ -269,59 +205,7 @@ class ConfigurationTest extends TestCase
         \ini_set('include_path', $includePath);
     }
 
-<<<<<<< HEAD
-    public function testExtensionConfigurationIsReadCorrectly(): void
-    {
-        $dir         = __DIR__;
-        $includePath = \ini_get('include_path');
-
-        \ini_set('include_path', $dir . PATH_SEPARATOR . $includePath);
-
-        $this->assertEquals(
-            [
-                0 =>
-                    [
-                        'class'     => 'MyExtension',
-                        'file'      => '/optional/path/to/MyExtension.php',
-                        'arguments' =>
-                            [
-                                0 =>
-                                    [
-                                        0 => 'Sebastian',
-                                    ],
-                                1 => 22,
-                                2 => 'April',
-                                3 => 19.78,
-                                4 => null,
-                                5 => new \stdClass,
-                                6 => \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'MyTestFile.php',
-                                7 => \dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'MyRelativePath',
-                            ],
-                    ],
-                [
-                    'class'     => 'IncludePathExtension',
-                    'file'      => __FILE__,
-                    'arguments' => []
-                ],
-                [
-                    'class'     => 'CompactArgumentsExtension',
-                    'file'      => '/CompactArgumentsExtension.php',
-                    'arguments' =>
-                        [
-                            0 => 42
-                        ],
-                ],
-            ],
-            $this->configuration->getExtensionConfiguration()
-        );
-
-        \ini_set('include_path', $includePath);
-    }
-
-    public function testLoggingConfigurationIsReadCorrectly(): void
-=======
     public function testLoggingConfigurationIsReadCorrectly()
->>>>>>> dashboard-test
     {
         $this->assertEquals(
             [

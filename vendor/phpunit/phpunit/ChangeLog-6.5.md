@@ -2,21 +2,6 @@
 
 All notable changes of the PHPUnit 6.5 release series are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-<<<<<<< HEAD
-## [6.5.9] - 2018-MM-DD
-
-### Fixed
-
-* Fixed [#3142](https://github.com/sebastianbergmann/phpunit/issues/3142): Method-level annotations (`@backupGlobals`, `@backupStaticAttributes`, `@errorHandler`, `@preserveGlobalState`) do not override class-level annotations
-
-## [6.5.8] - 2018-04-10
-
-### Fixed
-
-* Fixed [#2830](https://github.com/sebastianbergmann/phpunit/issues/2830): `@runClassInSeparateProcess` does not work for tests that use `@dataProvider`
-
-=======
->>>>>>> dashboard-test
 ## [6.5.7] - 2018-02-26
 
 ### Fixed

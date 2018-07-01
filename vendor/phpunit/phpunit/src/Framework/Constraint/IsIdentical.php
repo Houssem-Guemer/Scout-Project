@@ -89,19 +89,6 @@ class IsIdentical extends Constraint
                 );
             }
 
-<<<<<<< HEAD
-            // if both values are array, make sure a diff is generated
-            if (\is_array($this->value) && \is_array($other)) {
-                $f = new ComparisonFailure(
-                    $this->value,
-                    $other,
-                    $this->exporter->export($this->value),
-                    $this->exporter->export($other)
-                );
-            }
-
-=======
->>>>>>> dashboard-test
             $this->fail($other, $description, $f);
         }
     }

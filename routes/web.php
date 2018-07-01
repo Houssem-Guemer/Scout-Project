@@ -20,9 +20,6 @@ Route::get('/login', 'DashboardController@index');
 Route::get('/logout', 'DashboardController@index'); 
 Route::get('/dashboard', "DashboardController@index");
 
-<<<<<<< HEAD
-Route::resource('/home/posts', 'PostsController');
-=======
 Auth::routes();
 
 /* ================================ 
@@ -101,4 +98,3 @@ Route::post('/dashboard/posts/upload', "postsController@upload");
 Route::post('/dashboard/posts/', "postsController@store");
 Route::get('/dashboard/posts/create', "postsController@create");
 Route::get('/dashboard/posts/{id}', "postsController@show");
->>>>>>> dashboard-test

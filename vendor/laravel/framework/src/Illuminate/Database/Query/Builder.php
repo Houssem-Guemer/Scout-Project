@@ -1007,13 +1007,6 @@ class Builder
      */
     public function whereTime($column, $operator, $value, $boolean = 'and')
     {
-<<<<<<< HEAD
-        list($value, $operator) = $this->prepareValueAndOperator(
-            $value, $operator, func_num_args() === 2
-        );
-
-=======
->>>>>>> dashboard-test
         return $this->addDateBasedWhere('Time', $column, $operator, $value, $boolean);
     }
 
@@ -1053,26 +1046,6 @@ class Builder
     }
 
     /**
-<<<<<<< HEAD
-     * Add an "or where day" statement to the query.
-     *
-     * @param  string  $column
-     * @param  string  $operator
-     * @param  mixed  $value
-     * @return \Illuminate\Database\Query\Builder|static
-     */
-    public function orWhereDay($column, $operator, $value = null)
-    {
-        list($value, $operator) = $this->prepareValueAndOperator(
-            $value, $operator, func_num_args() === 2
-        );
-
-        return $this->addDateBasedWhere('Day', $column, $operator, $value, 'or');
-    }
-
-    /**
-=======
->>>>>>> dashboard-test
      * Add a "where month" statement to the query.
      *
      * @param  string  $column
@@ -1091,26 +1064,6 @@ class Builder
     }
 
     /**
-<<<<<<< HEAD
-     * Add an "or where month" statement to the query.
-     *
-     * @param  string  $column
-     * @param  string  $operator
-     * @param  mixed  $value
-     * @return \Illuminate\Database\Query\Builder|static
-     */
-    public function orWhereMonth($column, $operator, $value = null)
-    {
-        list($value, $operator) = $this->prepareValueAndOperator(
-            $value, $operator, func_num_args() === 2
-        );
-
-        return $this->addDateBasedWhere('Month', $column, $operator, $value, 'or');
-    }
-
-    /**
-=======
->>>>>>> dashboard-test
      * Add a "where year" statement to the query.
      *
      * @param  string  $column
@@ -1129,26 +1082,6 @@ class Builder
     }
 
     /**
-<<<<<<< HEAD
-     * Add an "or where year" statement to the query.
-     *
-     * @param  string  $column
-     * @param  string  $operator
-     * @param  mixed  $value
-     * @return \Illuminate\Database\Query\Builder|static
-     */
-    public function orWhereYear($column, $operator, $value = null)
-    {
-        list($value, $operator) = $this->prepareValueAndOperator(
-            $value, $operator, func_num_args() === 2
-        );
-
-        return $this->addDateBasedWhere('Year', $column, $operator, $value, 'or');
-    }
-
-    /**
-=======
->>>>>>> dashboard-test
      * Add a date based (year, month, day, time) statement to the query.
      *
      * @param  string  $type
@@ -1315,105 +1248,6 @@ class Builder
     }
 
     /**
-<<<<<<< HEAD
-     * Adds a where condition using row values.
-     *
-     * @param  array   $columns
-     * @param  string  $operator
-     * @param  array   $values
-     * @param  string  $boolean
-     * @return $this
-     */
-    public function whereRowValues($columns, $operator, $values, $boolean = 'and')
-    {
-        if (count($columns) !== count($values)) {
-            throw new InvalidArgumentException('The number of columns must match the number of values');
-        }
-
-        $type = 'RowValues';
-
-        $this->wheres[] = compact('type', 'columns', 'operator', 'values', 'boolean');
-
-        $this->addBinding($values);
-
-        return $this;
-    }
-
-    /**
-     * Adds a or where condition using row values.
-     *
-     * @param  array   $columns
-     * @param  string  $operator
-     * @param  array   $values
-     * @return $this
-     */
-    public function orWhereRowValues($columns, $operator, $values)
-    {
-        return $this->whereRowValues($columns, $operator, $values, 'or');
-    }
-
-    /**
-     * Add a "where JSON contains" clause to the query.
-     *
-     * @param  string  $column
-     * @param  mixed  $value
-     * @param  string  $boolean
-     * @param  bool  $not
-     * @return $this
-     */
-    public function whereJsonContains($column, $value, $boolean = 'and', $not = false)
-    {
-        $type = 'JsonContains';
-
-        $this->wheres[] = compact('type', 'column', 'value', 'boolean', 'not');
-
-        if (! $value instanceof Expression) {
-            $this->addBinding(json_encode($value));
-        }
-
-        return $this;
-    }
-
-    /**
-     * Add a "or where JSON contains" clause to the query.
-     *
-     * @param  string  $column
-     * @param  mixed  $value
-     * @return $this
-     */
-    public function orWhereJsonContains($column, $value)
-    {
-        return $this->whereJsonContains($column, $value, 'or');
-    }
-
-    /**
-     * Add a "where JSON not contains" clause to the query.
-     *
-     * @param  string  $column
-     * @param  mixed  $value
-     * @param  string  $boolean
-     * @return $this
-     */
-    public function whereJsonDoesntContain($column, $value, $boolean = 'and')
-    {
-        return $this->whereJsonContains($column, $value, $boolean, true);
-    }
-
-    /**
-     * Add a "or where JSON not contains" clause to the query.
-     *
-     * @param  string  $column
-     * @param  mixed  $value
-     * @return $this
-     */
-    public function orWhereJsonDoesntContain($column, $value)
-    {
-        return $this->whereJsonDoesntContain($column, $value, 'or');
-    }
-
-    /**
-=======
->>>>>>> dashboard-test
      * Handles dynamic "where" clauses to the query.
      *
      * @param  string  $method
@@ -1539,13 +1373,6 @@ class Builder
      */
     public function orHaving($column, $operator = null, $value = null)
     {
-<<<<<<< HEAD
-        list($value, $operator) = $this->prepareValueAndOperator(
-            $value, $operator, func_num_args() === 2
-        );
-
-=======
->>>>>>> dashboard-test
         return $this->having($column, $operator, $value, 'or');
     }
 

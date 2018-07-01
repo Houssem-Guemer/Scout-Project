@@ -25,13 +25,6 @@ require_once TEST_FILES_PATH . 'OverrideTestCase.php';
 require_once TEST_FILES_PATH . 'RequirementsClassBeforeClassHookTest.php';
 require_once TEST_FILES_PATH . 'NoArgTestCaseTest.php';
 require_once TEST_FILES_PATH . 'Singleton.php';
-<<<<<<< HEAD
-
-require_once TEST_FILES_PATH . 'DoNoAssertionTestCase.php';
-
-require_once TEST_FILES_PATH . 'FunctionCallback.php';
-=======
 require_once TEST_FILES_PATH . 'Mockable.php';
 require_once TEST_FILES_PATH . 'CoverageNamespacedFunctionTest.php';
 require_once TEST_FILES_PATH . 'NamespaceCoveredFunction.php';
->>>>>>> dashboard-test

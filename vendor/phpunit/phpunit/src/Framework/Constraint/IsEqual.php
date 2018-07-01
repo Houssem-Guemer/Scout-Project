@@ -10,13 +10,8 @@
 namespace PHPUnit\Framework\Constraint;
 
 use PHPUnit\Framework\ExpectationFailedException;
-<<<<<<< HEAD
-use SebastianBergmann\Comparator\ComparisonFailure;
-use SebastianBergmann\Comparator\Factory as ComparatorFactory;
-=======
 use PHPUnit\Util\InvalidArgumentHelper;
 use SebastianBergmann;
->>>>>>> dashboard-test
 
 /**
  * Constraint that checks if one value is equal to another.
@@ -37,43 +32,27 @@ class IsEqual extends Constraint
     /**
      * @var float
      */
-<<<<<<< HEAD
-    private $delta;
-=======
     protected $delta = 0.0;
->>>>>>> dashboard-test
 
     /**
      * @var int
      */
-<<<<<<< HEAD
-    private $maxDepth;
-=======
     protected $maxDepth = 10;
->>>>>>> dashboard-test
 
     /**
      * @var bool
      */
-<<<<<<< HEAD
-    private $canonicalize;
-=======
     protected $canonicalize = false;
->>>>>>> dashboard-test
 
     /**
      * @var bool
      */
-<<<<<<< HEAD
-    private $ignoreCase;
-=======
     protected $ignoreCase = false;
 
     /**
      * @var SebastianBergmann\Comparator\ComparisonFailure
      */
     protected $lastFailure;
->>>>>>> dashboard-test
 
     /**
      * @param mixed $value

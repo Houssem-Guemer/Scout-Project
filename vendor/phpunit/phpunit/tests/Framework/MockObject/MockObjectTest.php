@@ -725,19 +725,6 @@ class MockObjectTest extends TestCase
 //            $this->fail('Expected exception');
         } catch (ExpectationFailedException $e) {
             $this->assertSame(
-<<<<<<< HEAD:vendor/phpunit/phpunit/tests/Framework/MockObject/MockObjectTest.php
-                'Expectation failed for method name is equal to "right" when invoked 1 time(s).' . "\n" .
-                'Parameter 0 for invocation SomeClass::right(Array (...)) does not match expected value.' . "\n" .
-                'Failed asserting that two arrays are equal.' . "\n" .
-                '--- Expected' . "\n" .
-                '+++ Actual' . "\n" .
-                '@@ @@' . "\n" .
-                ' Array (' . "\n" .
-                '-    0 => \'first\'' . "\n" .
-                '-    1 => \'second\'' . "\n" .
-                '+    0 => \'second\'' . "\n" .
-                ' )' . "\n",
-=======
                 'Expectation failed for method name is equal to "right" when invoked 1 time(s).' . PHP_EOL .
                 'Parameter 0 for invocation SomeClass::right(Array (...)) does not match expected value.' . PHP_EOL .
                 'Failed asserting that two arrays are equal.' . PHP_EOL .
@@ -748,7 +735,6 @@ class MockObjectTest extends TestCase
                 '-    0 => \'first\'' . PHP_EOL .
                 '-    1 => \'second\'' . PHP_EOL .
                 '+    0 => \'second\'' . PHP_EOL,
->>>>>>> dashboard-test:vendor/phpunit/phpunit-mock-objects/tests/MockObjectTest.php
                 $e->getMessage()
             );
         }
@@ -1057,49 +1043,10 @@ class MockObjectTest extends TestCase
         $this->assertInstanceOf(MockObject::class, $stub->methodWithClassReturnTypeDeclaration());
     }
 
-<<<<<<< HEAD:vendor/phpunit/phpunit/tests/Framework/MockObject/MockObjectTest.php
-    public function testDisableAutomaticReturnValueGeneration(): void
-    {
-        $mock = $this->getMockBuilder(SomeClass::class)
-            ->disableAutoReturnValueGeneration()
-            ->getMock();
-
-        $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage(
-            'Return value inference disabled and no expectation set up for SomeClass::doSomethingElse()'
-        );
-
-        $mock->doSomethingElse(1);
-    }
-
-    public function testDisableAutomaticReturnValueGenerationWithToString(): void
-    {
-        $mock = $this->getMockBuilder(StringableClass::class)
-            ->disableAutoReturnValueGeneration()
-            ->getMock();
-
-        (string) $mock;
-
-        try {
-            $mock->__phpunit_verify();
-            $this->fail('Exception expected');
-        } catch (ExpectationFailedException $e) {
-            $this->assertSame(
-                'Return value inference disabled and no expectation set up for StringableClass::__toString()',
-                $e->getMessage()
-            );
-        }
-
-        $this->resetMockObjects();
-    }
-
-    public function testVoidReturnTypeIsMockedCorrectly(): void
-=======
     /**
      * @requires PHP 7.1
      */
     public function testVoidReturnTypeIsMockedCorrectly()
->>>>>>> dashboard-test:vendor/phpunit/phpunit-mock-objects/tests/MockObjectTest.php
     {
         /** @var ClassWithAllPossibleReturnTypes|MockObject $stub */
         $stub = $this->createMock(ClassWithAllPossibleReturnTypes::class);
@@ -1117,23 +1064,4 @@ class MockObjectTest extends TestCase
 
         $this->assertInstanceOf(stdClass::class, $stub->methodWithObjectReturnTypeDeclaration());
     }
-<<<<<<< HEAD:vendor/phpunit/phpunit/tests/Framework/MockObject/MockObjectTest.php
-
-    public function testGetObjectForTrait(): void
-    {
-        $object = $this->getObjectForTrait(ExampleTrait::class);
-
-        $this->assertSame('ohHai', $object->ohHai());
-    }
-
-    private function resetMockObjects(): void
-    {
-        $refl = new ReflectionObject($this);
-        $refl = $refl->getParentClass();
-        $prop = $refl->getProperty('mockObjects');
-        $prop->setAccessible(true);
-        $prop->setValue($this, []);
-    }
-=======
->>>>>>> dashboard-test:vendor/phpunit/phpunit-mock-objects/tests/MockObjectTest.php
 }
