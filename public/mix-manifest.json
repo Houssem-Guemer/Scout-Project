@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "/js/app.js": "/js/app.js"
+=======
+    "/assets/vue/app.js": "/assets/vue/app.js"
+>>>>>>> dashboard-test
 }

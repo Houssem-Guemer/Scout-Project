@@ -104,8 +104,13 @@ class FileViewFinder implements ViewFinderInterface
     {
         $segments = explode(static::HINT_PATH_DELIMITER, $name);
 
+<<<<<<< HEAD
         if (count($segments) !== 2) {
             throw new InvalidArgumentException("View [{$name}] has an invalid name.");
+=======
+        if (count($segments) != 2) {
+            throw new InvalidArgumentException("View [$name] has an invalid name.");
+>>>>>>> dashboard-test
         }
 
         if (! isset($this->hints[$segments[0]])) {
@@ -134,7 +139,7 @@ class FileViewFinder implements ViewFinderInterface
             }
         }
 
-        throw new InvalidArgumentException("View [{$name}] not found.");
+        throw new InvalidArgumentException("View [$name] not found.");
     }
 
     /**

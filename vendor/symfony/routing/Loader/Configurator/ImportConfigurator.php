@@ -37,6 +37,7 @@ class ImportConfigurator
     /**
      * Sets the prefix to add to the path of all child routes.
      *
+<<<<<<< HEAD
      * @param string|array $prefix the prefix, or the localized prefixes
      *
      * @return $this
@@ -85,6 +86,13 @@ class ImportConfigurator
      * @return $this
      */
     final public function namePrefix(string $namePrefix)
+=======
+     * @param string $prefix
+     *
+     * @return $this
+     */
+    final public function prefix($prefix)
+>>>>>>> dashboard-test
     {
         $this->route->addNamePrefix($namePrefix);
 

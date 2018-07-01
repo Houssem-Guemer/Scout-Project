@@ -275,10 +275,16 @@ class ProjectUrlMatcher extends Symfony\Component\Routing\Tests\Fixtures\Redirec
                 $offset += strlen($m);
             }
         }
+<<<<<<< HEAD
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();
         }
 
         return null;
+=======
+        not_nonsecure:
+
+        throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
+>>>>>>> dashboard-test
     }
 }

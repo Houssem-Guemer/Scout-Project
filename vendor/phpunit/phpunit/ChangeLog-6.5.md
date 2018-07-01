@@ -2,6 +2,7 @@
 
 All notable changes of the PHPUnit 6.5 release series are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [6.5.9] - 2018-MM-DD
 
 ### Fixed
@@ -14,6 +15,8 @@ All notable changes of the PHPUnit 6.5 release series are documented in this fil
 
 * Fixed [#2830](https://github.com/sebastianbergmann/phpunit/issues/2830): `@runClassInSeparateProcess` does not work for tests that use `@dataProvider`
 
+=======
+>>>>>>> dashboard-test
 ## [6.5.7] - 2018-02-26
 
 ### Fixed
@@ -68,8 +71,11 @@ All notable changes of the PHPUnit 6.5 release series are documented in this fil
 * Fixed [#2654](https://github.com/sebastianbergmann/phpunit/issues/2654): Problems with `assertJsonStringEqualsJsonString()`
 * Fixed [#2810](https://github.com/sebastianbergmann/phpunit/pull/2810): Code Coverage for PHPT tests does not work
 
+<<<<<<< HEAD
 [6.5.9]: https://github.com/sebastianbergmann/phpunit/compare/6.5.8...6.5.9
 [6.5.8]: https://github.com/sebastianbergmann/phpunit/compare/6.5.7...6.5.8
+=======
+>>>>>>> dashboard-test
 [6.5.7]: https://github.com/sebastianbergmann/phpunit/compare/6.5.6...6.5.7
 [6.5.6]: https://github.com/sebastianbergmann/phpunit/compare/6.5.5...6.5.6
 [6.5.5]: https://github.com/sebastianbergmann/phpunit/compare/6.5.4...6.5.5

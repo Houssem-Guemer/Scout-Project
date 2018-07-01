@@ -133,6 +133,7 @@ class PhpFileLoaderTest extends TestCase
         $this->assertEquals($expectedCollectionClosure, $routeCollectionClosure);
         $this->assertEquals($expectedCollectionObject, $routeCollectionObject);
     }
+<<<<<<< HEAD
 
     public function testRoutingConfiguratorCanImportGlobPatterns()
     {
@@ -166,4 +167,6 @@ class PhpFileLoaderTest extends TestCase
 
         $this->assertEquals($expectedCollection, $routeCollection);
     }
+=======
+>>>>>>> dashboard-test
 }

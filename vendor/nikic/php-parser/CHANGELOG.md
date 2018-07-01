@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 Version 4.0.3-dev
+=======
+Version 3.1.6-dev
+>>>>>>> dashboard-test
 -----------------
 
 Nothing yet.
 
+<<<<<<< HEAD
 Version 4.0.2 (2018-06-03)
 --------------------------
 
@@ -140,6 +145,8 @@ Version 4.0.0-alpha1 (2017-10-18)
 * The `BuilderAbstract` class has been removed. It's functionality is moved into `BuilderHelpers`.
   However, this is an internal class and should not be used directly.
 
+=======
+>>>>>>> dashboard-test
 Version 3.1.5 (2018-02-28)
 --------------------------
 
@@ -192,7 +199,7 @@ Version 3.1.0 (2017-07-28)
 * [PHP 7.2] Added support for trailing comma in group use statements.
 * [PHP 7.2] Added support for `object` type. This means `object` types will now be represented as a
   builtin type (a simple `"object"` string), rather than a class `Name`.
-
+  
 ### Fixed
 
 * Floating-point numbers are now printed correctly if the LC_NUMERIC locale uses a comma as decimal
@@ -312,7 +319,7 @@ This release primarily improves our support for error recovery.
   `NameResolver::__construct()`.
 * The `NameResolver` now adds a `namespacedName` attribute on name nodes that cannot be statically
   resolved (unqualified unaliased function or constant names in namespaces).
-
+  
 ### Fixed
 
 * Fixed attribute assignment for `GroupUse` prefix and variables in interpolated strings.
@@ -402,7 +409,7 @@ Additionally the following changes were made:
   takes an array of subnodes. Unlike classes/interfaces, traits can only have a `stmts` subnode.
 * The `NodeDumper` now prints class/method/property/constant modifiers, as well as the include and
   use type in a textual representation, instead of only showing the number.
-* All methods on `PrettyPrinter\Standard` are now protected. Previously most of them were public.
+* All methods on `PrettyPrinter\Standard` are now protected. Previoulsy most of them were public.
 
 ### Removed
 
@@ -440,7 +447,7 @@ Version 2.1.0 (2016-04-19)
 * Added `kind` attribute to `Expr\Exit` to distinguish between `exit` and `die`.
 * Added `kind` attribute to `Scalar\LNumber` to distinguish between decimal, binary, octal and
   hexadecimal numbers.
-* Added `kind` attribute to `Expr\Array` to distinguish between `array()` and `[]`.
+* Added `kind` attribtue to `Expr\Array` to distinguish between `array()` and `[]`.
 * Added `kind` attribute to `Scalar\String` and `Scalar\Encapsed` to distinguish between
   single-quoted, double-quoted, heredoc and nowdoc string.
 * Added `docLabel` attribute to `Scalar\String` and `Scalar\Encapsed`, if it is a heredoc or

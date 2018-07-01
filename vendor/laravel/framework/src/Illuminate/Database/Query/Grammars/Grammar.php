@@ -153,12 +153,10 @@ class Grammar extends BaseGrammar
      */
     protected function compileJoins(Builder $query, $joins)
     {
-        return collect($joins)->map(function ($join) use ($query) {
+        return collect($joins)->map(function ($join) {
             $table = $this->wrapTable($join->table);
 
-            $nestedJoins = is_null($join->joins) ? '' : ' '.$this->compileJoins($query, $join->joins);
-
-            return trim("{$join->type} join {$table}{$nestedJoins} {$this->compileWheres($join)}");
+            return trim("{$join->type} join {$table} {$this->compileWheres($join)}");
         })->implode(' ');
     }
 
@@ -481,6 +479,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a where row values condition.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -524,6 +523,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> dashboard-test
      * Compile the "group by" portions of the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -686,9 +687,9 @@ class Grammar extends BaseGrammar
      */
     protected function compileUnion(array $union)
     {
-        $conjunction = $union['all'] ? ' union all ' : ' union ';
+        $conjuction = $union['all'] ? ' union all ' : ' union ';
 
-        return $conjunction.$union['query']->toSql();
+        return $conjuction.$union['query']->toSql();
     }
 
     /**

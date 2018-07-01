@@ -30,9 +30,18 @@ trait AddTrait
     /**
      * Adds a route.
      *
+<<<<<<< HEAD
      * @param string|array $path the path, or the localized paths of the route
      */
     final public function add(string $name, $path): RouteConfigurator
+=======
+     * @param string $name
+     * @param string $path
+     *
+     * @return RouteConfigurator
+     */
+    final public function add($name, $path)
+>>>>>>> dashboard-test
     {
         $paths = array();
         $parentConfigurator = $this instanceof CollectionConfigurator ? $this : ($this instanceof RouteConfigurator ? $this->parentConfigurator : null);
@@ -76,9 +85,18 @@ trait AddTrait
     /**
      * Adds a route.
      *
+<<<<<<< HEAD
      * @param string|array $path the path, or the localized paths of the route
      */
     final public function __invoke(string $name, $path): RouteConfigurator
+=======
+     * @param string $name
+     * @param string $path
+     *
+     * @return RouteConfigurator
+     */
+    final public function __invoke($name, $path)
+>>>>>>> dashboard-test
     {
         return $this->add($name, $path);
     }

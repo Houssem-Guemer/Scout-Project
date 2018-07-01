@@ -6,7 +6,6 @@ use LogicException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Collection as BaseCollection;
 
@@ -45,7 +44,7 @@ class Collection extends BaseCollection implements QueueableCollection
     /**
      * Load a set of relationships onto the collection.
      *
-     * @param  array|string  $relations
+     * @param  mixed  $relations
      * @return $this
      */
     public function load($relations)
@@ -64,6 +63,7 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
+<<<<<<< HEAD
      * Load a set of relationships onto the collection if they are not already eager loaded.
      *
      * @param  array|string  $relations
@@ -158,6 +158,8 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
+=======
+>>>>>>> dashboard-test
      * Add an item to the collection.
      *
      * @param  mixed  $item
@@ -508,23 +510,7 @@ class Collection extends BaseCollection implements QueueableCollection
      */
     public function getQueueableIds()
     {
-        if ($this->isEmpty()) {
-            return [];
-        }
-
-        return $this->first() instanceof Pivot
-                    ? $this->map->getQueueableId()->all()
-                    : $this->modelKeys();
-    }
-
-    /**
-     * Get the relationships of the entities being queued.
-     *
-     * @return array
-     */
-    public function getQueueableRelations()
-    {
-        return $this->isNotEmpty() ? $this->first()->getQueueableRelations() : [];
+        return $this->modelKeys();
     }
 
     /**

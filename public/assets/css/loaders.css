@@ -1,0 +1,18 @@
+.panel{
+ background-color:blur;
+}
+maindd {
+  top: calc(40% - 5px);
+  left: calc(50% - 5px);
+  margin: auto;
+  position: absolute !important;
+
+  display: inline-block;
+  max-width: 1000px;
+  margin: 1em auto;
+  animation: opacityIn 1s ease-in;
+z-index: 999999;
+  }
+  
+   
+  

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+<<<<<<< HEAD
     protected $table = 'posts';
     protected $primaryKey = 'post_id';
 
@@ -14,4 +15,8 @@ class Post extends Model
     ];
 
     
+=======
+    protected $table = "posts";
+    protected $primaryKey = "post_id";
+>>>>>>> dashboard-test
 }

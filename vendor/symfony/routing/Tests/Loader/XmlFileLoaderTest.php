@@ -400,6 +400,7 @@ class XmlFileLoaderTest extends TestCase
         $loader = new XmlFileLoader(new FileLocator(array(__DIR__.'/../Fixtures/controller')));
         $loader->load('import_override_defaults.xml');
     }
+<<<<<<< HEAD
 
     public function testImportRouteWithGlobMatchingSingleFile()
     {
@@ -441,4 +442,6 @@ class XmlFileLoaderTest extends TestCase
         $this->assertEquals('/slash/', $routeCollection->get('a_app_homepage')->getPath());
         $this->assertEquals('/no-slash', $routeCollection->get('b_app_homepage')->getPath());
     }
+=======
+>>>>>>> dashboard-test
 }

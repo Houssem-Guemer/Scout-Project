@@ -182,6 +182,7 @@ class YamlFileLoaderTest extends TestCase
         $loader = new YamlFileLoader(new FileLocator(array(__DIR__.'/../Fixtures/controller')));
         $loader->load('import_override_defaults.yml');
     }
+<<<<<<< HEAD
 
     public function testImportRouteWithGlobMatchingSingleFile()
     {
@@ -304,4 +305,6 @@ class YamlFileLoaderTest extends TestCase
         $this->assertEquals('/slash/', $routeCollection->get('a_app_homepage')->getPath());
         $this->assertEquals('/no-slash', $routeCollection->get('b_app_homepage')->getPath());
     }
+=======
+>>>>>>> dashboard-test
 }

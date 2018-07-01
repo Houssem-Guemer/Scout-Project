@@ -142,6 +142,7 @@ class AnnotationClassLoaderTest extends AbstractAnnotationLoaderTest
         $this->assertEquals('/the/path', $routes->get('post.en')->getPath());
     }
 
+<<<<<<< HEAD
     public function testRouteWithPathWithPrefix()
     {
         $routes = $this->loader->load(PrefixedActionPathController::class);
@@ -151,6 +152,18 @@ class AnnotationClassLoaderTest extends AbstractAnnotationLoaderTest
         $this->assertEquals('lol=fun', $route->getCondition());
         $this->assertEquals('frankdejonge.nl', $route->getHost());
     }
+=======
+        $this->reader
+            ->expects($this->exactly(2))
+            ->method('getClassAnnotation')
+            ->will($this->returnValue($this->getAnnotatedRoute($classRouteData)))
+        ;
+        $this->reader
+            ->expects($this->once())
+            ->method('getMethodAnnotations')
+            ->will($this->returnValue(array()))
+        ;
+>>>>>>> dashboard-test
 
     public function testLocalizedRouteWithPathWithPrefix()
     {
@@ -160,6 +173,7 @@ class AnnotationClassLoaderTest extends AbstractAnnotationLoaderTest
         $this->assertEquals('/prefix/pad', $routes->get('action.nl')->getPath());
     }
 
+<<<<<<< HEAD
     public function testLocalizedPrefixLocalizedRoute()
     {
         $routes = $this->loader->load(LocalizedPrefixLocalizedActionController::class);
@@ -213,6 +227,11 @@ class AnnotationClassLoaderTest extends AbstractAnnotationLoaderTest
         $this->assertSame($classRouteData2['path'], $route->getPath(), '->load preserves class route path');
         $this->assertEquals($classRouteData2['schemes'], $route->getSchemes(), '->load preserves class route schemes');
         $this->assertEquals($classRouteData2['methods'], $route->getMethods(), '->load preserves class route methods');
+=======
+        $this->assertSame($classRouteData['path'], $route->getPath(), '->load preserves class route path');
+        $this->assertEquals(array_merge($classRouteData['schemes'], $classRouteData['schemes']), $route->getSchemes(), '->load preserves class route schemes');
+        $this->assertEquals(array_merge($classRouteData['methods'], $classRouteData['methods']), $route->getMethods(), '->load preserves class route methods');
+>>>>>>> dashboard-test
     }
 
     public function testMissingPrefixLocale()

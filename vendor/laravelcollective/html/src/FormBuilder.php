@@ -50,12 +50,15 @@ class FormBuilder
     protected $csrfToken;
 
     /**
+<<<<<<< HEAD
      * Consider Request variables while auto fill.
      * @var bool
      */
     protected $considerRequest = false;
 
     /**
+=======
+>>>>>>> dashboard-test
      * The session store implementation.
      *
      * @var \Illuminate\Contracts\Session\Session
@@ -114,7 +117,10 @@ class FormBuilder
      * @param  \Illuminate\Contracts\Routing\UrlGenerator $url
      * @param  \Illuminate\Contracts\View\Factory         $view
      * @param  string                                     $csrfToken
+<<<<<<< HEAD
      * @param  Request                                    $request
+=======
+>>>>>>> dashboard-test
      */
     public function __construct(HtmlBuilder $html, UrlGenerator $url, Factory $view, $csrfToken, Request $request = null)
     {
@@ -197,7 +203,11 @@ class FormBuilder
     {
         $this->model = $model;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> dashboard-test
     /**
      * Get the current model instance on the form builder.
      *
@@ -337,6 +347,7 @@ class FormBuilder
     }
 
     /**
+<<<<<<< HEAD
      * Create a range input field.
      *
      * @param  string $name
@@ -351,6 +362,8 @@ class FormBuilder
     }
 
     /**
+=======
+>>>>>>> dashboard-test
      * Create a hidden input field.
      *
      * @param  string $name
@@ -485,10 +498,13 @@ class FormBuilder
      */
     public function time($name, $value = null, $options = [])
     {
+<<<<<<< HEAD
         if ($value instanceof DateTime) {
             $value = $value->format('H:i');
         }
 
+=======
+>>>>>>> dashboard-test
         return $this->input('time', $name, $value, $options);
     }
 
@@ -507,6 +523,7 @@ class FormBuilder
     }
 
     /**
+<<<<<<< HEAD
      * Create a week input field.
      *
      * @param  string $name
@@ -525,6 +542,8 @@ class FormBuilder
     }
 
     /**
+=======
+>>>>>>> dashboard-test
      * Create a file input field.
      *
      * @param  string $name
@@ -570,7 +589,11 @@ class FormBuilder
         // the element. Then we'll create the final textarea elements HTML for us.
         $options = $this->html->attributes($options);
 
+<<<<<<< HEAD
         return $this->toHtmlString('<textarea' . $options . '>' . e($value, false). '</textarea>');
+=======
+        return $this->toHtmlString('<textarea' . $options . '>' . e($value). '</textarea>');
+>>>>>>> dashboard-test
     }
 
     /**
@@ -752,6 +775,7 @@ class FormBuilder
      * @param  string $selected
      * @param  array  $attributes
      * @param  array  $optionsAttributes
+<<<<<<< HEAD
      * @param  integer  $level
      *
      * @return \Illuminate\Support\HtmlString
@@ -769,6 +793,22 @@ class FormBuilder
             }
         }
         return $this->toHtmlString('<optgroup label="' . e($space.$label, false) . '"' . $this->html->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
+=======
+     *
+     * @return \Illuminate\Support\HtmlString
+     */
+    protected function optionGroup($list, $label, $selected, array $attributes = [], array $optionsAttributes = [])
+    {
+        $html = [];
+
+        foreach ($list as $value => $display) {
+            $optionAttributes = $optionsAttributes[$value] ?? [];
+
+            $html[] = $this->option($display, $value, $selected, $optionAttributes);
+        }
+        
+        return $this->toHtmlString('<optgroup label="' . e($label) . '"' . $this->html->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
+>>>>>>> dashboard-test
     }
 
     /**
@@ -789,7 +829,11 @@ class FormBuilder
 
         $string = '<option' . $this->html->attributes($options) . '>';
         if ($display !== null) {
+<<<<<<< HEAD
             $string .= e($display, false) . '</option>';
+=======
+            $string .= e($display) . '</option>';
+>>>>>>> dashboard-test
         }
 
         return $this->toHtmlString($string);
@@ -812,7 +856,11 @@ class FormBuilder
             'value' => '',
         ];
 
+<<<<<<< HEAD
         return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . e($display, false) . '</option>');
+=======
+        return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . e($display) . '</option>');
+>>>>>>> dashboard-test
     }
 
     /**
@@ -914,7 +962,11 @@ class FormBuilder
                 return $this->getRadioCheckedState($name, $value, $checked);
 
             default:
+<<<<<<< HEAD
                 return $this->compareValues($name, $value);
+=======
+                return $this->getValueAttribute($name) === $value;
+>>>>>>> dashboard-test
         }
     }
 
@@ -967,6 +1019,7 @@ class FormBuilder
             return $checked;
         }
 
+<<<<<<< HEAD
         return $this->compareValues($name, $value);
     }
 
@@ -982,6 +1035,9 @@ class FormBuilder
     protected function compareValues($name, $value)
     {
         return $this->getValueAttribute($name) == $value;
+=======
+        return $this->getValueAttribute($name) === $value;
+>>>>>>> dashboard-test
     }
 
     /**
@@ -1026,6 +1082,7 @@ class FormBuilder
     }
 
     /**
+<<<<<<< HEAD
      * Create a month input field.
      *
      * @param  string $name
@@ -1044,6 +1101,8 @@ class FormBuilder
     }
 
     /**
+=======
+>>>>>>> dashboard-test
      * Create a color input field.
      *
      * @param  string $name
@@ -1253,7 +1312,11 @@ class FormBuilder
             if ($hasNullMiddleware
                 && is_null($old)
                 && is_null($value)
+<<<<<<< HEAD
                 && !is_null($this->view->shared('errors'))
+=======
+                && ! is_null($this->view->shared('errors'))
+>>>>>>> dashboard-test
                 && count($this->view->shared('errors')) > 0
             ) {
                 return null;
@@ -1261,7 +1324,11 @@ class FormBuilder
         }
 
         $request = $this->request($name);
+<<<<<<< HEAD
         if (! is_null($request) && $name != '_method') {
+=======
+        if (! is_null($request)) {
+>>>>>>> dashboard-test
             return $request;
         }
 
@@ -1275,6 +1342,7 @@ class FormBuilder
     }
 
     /**
+<<<<<<< HEAD
      * Take Request in fill process
      * @param bool $consider
      */
@@ -1284,17 +1352,23 @@ class FormBuilder
     }
 
     /**
+=======
+>>>>>>> dashboard-test
      * Get value from current Request
      * @param $name
      * @return array|null|string
      */
     protected function request($name)
     {
+<<<<<<< HEAD
         if (!$this->considerRequest) {
             return null;
         }
 
         if (!isset($this->request)) {
+=======
+        if (! isset($this->request)) {
+>>>>>>> dashboard-test
             return null;
         }
 
@@ -1332,6 +1406,7 @@ class FormBuilder
             $key = $this->transformKey($name);
             $payload = $this->session->getOldInput($key);
 
+<<<<<<< HEAD
             if (!is_array($payload)) {
                 return $payload;
             }
@@ -1342,6 +1417,18 @@ class FormBuilder
                 }
 
                 if (!empty($this->payload[$key])) {
+=======
+            if (! is_array($payload)) {
+                return $payload;
+            }
+
+            if (! in_array($this->type, ['select', 'checkbox'])) {
+                if (! isset($this->payload[$key])) {
+                    $this->payload[$key] = collect($payload);
+                }
+
+                if (! empty($this->payload[$key])) {
+>>>>>>> dashboard-test
                     $value = $this->payload[$key]->shift();
                     return $value;
                 }
@@ -1358,7 +1445,11 @@ class FormBuilder
      */
     public function oldInputIsEmpty()
     {
+<<<<<<< HEAD
         return (isset($this->session) && count((array) $this->session->getOldInput()) === 0);
+=======
+        return (isset($this->session) && count($this->session->getOldInput()) === 0);
+>>>>>>> dashboard-test
     }
 
     /**

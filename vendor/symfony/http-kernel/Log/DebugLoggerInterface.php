@@ -17,6 +17,8 @@ use Symfony\Component\HttpFoundation\Request;
  * DebugLoggerInterface.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @method clear() Removes all log records.
  */
 interface DebugLoggerInterface
 {
@@ -40,10 +42,14 @@ interface DebugLoggerInterface
      *
      * @return int The number of errors
      */
+<<<<<<< HEAD
     public function countErrors(/* Request $request = null */);
 
     /**
      * Removes all log records.
      */
     public function clear();
+=======
+    public function countErrors();
+>>>>>>> dashboard-test
 }

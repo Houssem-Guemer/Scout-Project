@@ -10,6 +10,7 @@
 
 namespace PHPUnit\Util;
 
+<<<<<<< HEAD
 use Composer\Autoload\ClassLoader;
 use DeepCopy\DeepCopy;
 use Doctrine\Instantiator\Instantiator;
@@ -31,16 +32,20 @@ use SebastianBergmann\RecursionContext\Context;
 use SebastianBergmann\Timer\Timer;
 use SebastianBergmann\Version;
 use Text_Template;
+=======
+use ReflectionClass;
+>>>>>>> dashboard-test
 
 /**
  * Utility class for blacklisting PHPUnit's own source code files.
  */
-final class Blacklist
+class Blacklist
 {
     /**
      * @var array
      */
     public static $blacklistedClassNames = [
+<<<<<<< HEAD
         FileIteratorFacade::class     => 1,
         Timer::class                  => 1,
         PHP_Token::class              => 1,
@@ -63,6 +68,30 @@ final class Blacklist
         DocBlock::class               => 1,
         Prophet::class                => 1,
         DeepCopy::class               => 1
+=======
+        'File_Iterator'                               => 1,
+        'PHP_Invoker'                                 => 1,
+        'PHP_Timer'                                   => 1,
+        'PHP_Token'                                   => 1,
+        'PHPUnit\Framework\TestCase'                  => 2,
+        'PHPUnit\DbUnit\TestCase'                     => 2,
+        'PHPUnit\Framework\MockObject\Generator'      => 1,
+        'Text_Template'                               => 1,
+        'Symfony\Component\Yaml\Yaml'                 => 1,
+        'SebastianBergmann\CodeCoverage\CodeCoverage' => 1,
+        'SebastianBergmann\Diff\Diff'                 => 1,
+        'SebastianBergmann\Environment\Runtime'       => 1,
+        'SebastianBergmann\Comparator\Comparator'     => 1,
+        'SebastianBergmann\Exporter\Exporter'         => 1,
+        'SebastianBergmann\GlobalState\Snapshot'      => 1,
+        'SebastianBergmann\RecursionContext\Context'  => 1,
+        'SebastianBergmann\Version'                   => 1,
+        'Composer\Autoload\ClassLoader'               => 1,
+        'Doctrine\Instantiator\Instantiator'          => 1,
+        'phpDocumentor\Reflection\DocBlock'           => 1,
+        'Prophecy\Prophet'                            => 1,
+        'DeepCopy\DeepCopy'                           => 1
+>>>>>>> dashboard-test
     ];
 
     /**
@@ -73,14 +102,19 @@ final class Blacklist
     /**
      * @return string[]
      */
-    public function getBlacklistedDirectories(): array
+    public function getBlacklistedDirectories()
     {
         $this->initialize();
 
         return self::$directories;
     }
 
-    public function isBlacklisted(string $file): bool
+    /**
+     * @param string $file
+     *
+     * @return bool
+     */
+    public function isBlacklisted($file)
     {
         if (\defined('PHPUNIT_TESTSUITE')) {
             return false;
@@ -97,7 +131,7 @@ final class Blacklist
         return false;
     }
 
-    private function initialize(): void
+    private function initialize()
     {
         if (self::$directories === null) {
             self::$directories = [];
@@ -120,7 +154,7 @@ final class Blacklist
             // Hide process isolation workaround on Windows.
             if (DIRECTORY_SEPARATOR === '\\') {
                 // tempnam() prefix is limited to first 3 chars.
-                // @see https://php.net/manual/en/function.tempnam.php
+                // @see http://php.net/manual/en/function.tempnam.php
                 self::$directories[] = \sys_get_temp_dir() . '\\PHP';
             }
         }

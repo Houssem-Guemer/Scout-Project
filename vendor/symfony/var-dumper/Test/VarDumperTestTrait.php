@@ -21,12 +21,32 @@ trait VarDumperTestTrait
 {
     public function assertDumpEquals($expected, $data, $filter = 0, $message = '')
     {
+<<<<<<< HEAD
         $this->assertSame($this->prepareExpectation($expected, $filter), $this->getDump($data, null, $filter), $message);
+=======
+        if (is_string($filter)) {
+            @trigger_error(sprintf('The $message argument of the "%s()" method at 3rd position is deprecated since Symfony 3.4 and will be moved at 4th position in 4.0.', __METHOD__), E_USER_DEPRECATED);
+            $message = $filter;
+            $filter = 0;
+        }
+
+        $this->assertSame(rtrim($dump), $this->getDump($data, null, $filter), $message);
+>>>>>>> dashboard-test
     }
 
     public function assertDumpMatchesFormat($expected, $data, $filter = 0, $message = '')
     {
+<<<<<<< HEAD
         $this->assertStringMatchesFormat($this->prepareExpectation($expected, $filter), $this->getDump($data, null, $filter), $message);
+=======
+        if (is_string($filter)) {
+            @trigger_error(sprintf('The $message argument of the "%s()" method at 3rd position is deprecated since Symfony 3.4 and will be moved at 4th position in 4.0.', __METHOD__), E_USER_DEPRECATED);
+            $message = $filter;
+            $filter = 0;
+        }
+
+        $this->assertStringMatchesFormat(rtrim($dump), $this->getDump($data, null, $filter), $message);
+>>>>>>> dashboard-test
     }
 
     protected function getDump($data, $key = null, $filter = 0)

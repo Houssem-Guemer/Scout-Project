@@ -59,7 +59,14 @@ class GeneratorTest extends TestCase
         $this->generator->getMock(stdClass::class, ['foo', 'bar', 'foo']);
     }
 
+<<<<<<< HEAD:vendor/phpunit/phpunit/tests/Framework/MockObject/GeneratorTest.php
     public function testGetMockBlacklistedMethodNamesPhp7(): void
+=======
+    /**
+     * @requires PHP 7
+     */
+    public function testGetMockBlacklistedMethodNamesPhp7()
+>>>>>>> dashboard-test:vendor/phpunit/phpunit-mock-objects/tests/GeneratorTest.php
     {
         $mock = $this->generator->getMock(InterfaceWithSemiReservedMethodName::class);
 
@@ -176,7 +183,14 @@ class GeneratorTest extends TestCase
         $this->generator->getMock(stdClass::class, [], [], '', false, true, true, true, true);
     }
 
+<<<<<<< HEAD:vendor/phpunit/phpunit/tests/Framework/MockObject/GeneratorTest.php
     public function testCanImplementInterfacesThatHaveMethodsWithReturnTypes(): void
+=======
+    /**
+     * @requires PHP 7
+     */
+    public function testCanImplementInterfacesThatHaveMethodsWithReturnTypes()
+>>>>>>> dashboard-test:vendor/phpunit/phpunit-mock-objects/tests/GeneratorTest.php
     {
         $stub = $this->generator->getMock([AnInterfaceWithReturnType::class, AnInterface::class]);
 
@@ -204,6 +218,7 @@ class GeneratorTest extends TestCase
 
         $this->assertNull($mock->someMethod());
     }
+<<<<<<< HEAD:vendor/phpunit/phpunit/tests/Framework/MockObject/GeneratorTest.php
 
     public function testMockingOfThrowable(): void
     {
@@ -213,4 +228,6 @@ class GeneratorTest extends TestCase
         $this->assertInstanceOf(Exception::class, $stub);
         $this->assertInstanceOf(MockObject::class, $stub);
     }
+=======
+>>>>>>> dashboard-test:vendor/phpunit/phpunit-mock-objects/tests/GeneratorTest.php
 }

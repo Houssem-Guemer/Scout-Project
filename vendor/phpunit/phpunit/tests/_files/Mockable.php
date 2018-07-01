@@ -1,12 +1,4 @@
 <?php
-/*
- * This file is part of PHPUnit.
- *
- * (c) Sebastian Bergmann <sebastian@phpunit.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 class Mockable
 {
     public $constructorArgs;
@@ -17,12 +9,16 @@ class Mockable
         $this->constructorArgs = [$arg1, $arg2];
     }
 
+<<<<<<< HEAD
     public function __clone()
     {
         $this->cloned = true;
     }
 
     public function mockableMethod()
+=======
+    public function foo()
+>>>>>>> dashboard-test
     {
         // something different from NULL
         return true;
@@ -32,5 +28,10 @@ class Mockable
     {
         // something different from NULL
         return true;
+    }
+
+    public function __clone()
+    {
+        $this->cloned = true;
     }
 }

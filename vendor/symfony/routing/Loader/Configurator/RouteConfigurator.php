@@ -23,7 +23,11 @@ class RouteConfigurator
 
     private $parentConfigurator;
 
+<<<<<<< HEAD
     public function __construct(RouteCollection $collection, $route, string $name = '', CollectionConfigurator $parentConfigurator = null, array $prefixes = null)
+=======
+    public function __construct(RouteCollection $collection, Route $route, $name = '', CollectionConfigurator $parentConfigurator = null)
+>>>>>>> dashboard-test
     {
         $this->collection = $collection;
         $this->route = $route;

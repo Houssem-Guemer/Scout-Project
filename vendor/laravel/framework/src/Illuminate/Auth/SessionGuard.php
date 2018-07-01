@@ -4,7 +4,6 @@ namespace Illuminate\Auth;
 
 use RuntimeException;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\Auth\UserProvider;
@@ -535,6 +534,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
+<<<<<<< HEAD
      * Invalidate other sessions for the current user.
      *
      * The application must be using the AuthenticateSession middleware.
@@ -555,6 +555,8 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
+=======
+>>>>>>> dashboard-test
      * Register an authentication attempt event listener.
      *
      * @param  mixed  $callback

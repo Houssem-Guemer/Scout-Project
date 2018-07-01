@@ -40,12 +40,16 @@ class StaticPrefixCollection
      */
     private $items = array();
 
+<<<<<<< HEAD
     public function __construct(string $prefix = '/')
+=======
+    public function __construct($prefix = '')
+>>>>>>> dashboard-test
     {
         $this->prefix = $prefix;
     }
 
-    public function getPrefix(): string
+    public function getPrefix()
     {
         return $this->prefix;
     }
@@ -53,7 +57,11 @@ class StaticPrefixCollection
     /**
      * @return array[]|self[]
      */
+<<<<<<< HEAD
     public function getRoutes(): array
+=======
+    public function getItems()
+>>>>>>> dashboard-test
     {
         return $this->items;
     }
@@ -63,7 +71,11 @@ class StaticPrefixCollection
      *
      * @param array|self $route
      */
+<<<<<<< HEAD
     public function addRoute(string $prefix, $route, string $staticPrefix = null)
+=======
+    public function addRoute($prefix, $route)
+>>>>>>> dashboard-test
     {
         if (null === $staticPrefix) {
             list($prefix, $staticPrefix) = $this->getCommonPrefix($prefix, $prefix);
@@ -100,6 +112,7 @@ class StaticPrefixCollection
                 continue;
             }
 
+<<<<<<< HEAD
             if ($item instanceof self && $this->prefixes[$i] === $commonPrefix) {
                 // the new route is a child of a previous one, let's nest it
                 $item->addRoute($prefix, $route, $staticPrefix);
@@ -114,10 +127,31 @@ class StaticPrefixCollection
                 $this->prefixes[$i] = $commonPrefix;
                 $this->items[$i] = $child;
             }
+=======
+        // No optimised case was found, in this case we simple add the route for possible
+        // grouping when new routes are added.
+        $this->items[] = array($prefix, $route);
+    }
+
+    /**
+     * Tries to combine a route with another route or group.
+     *
+     * @param StaticPrefixCollection|array $item
+     * @param string                       $prefix
+     * @param mixed                        $route
+     *
+     * @return null|StaticPrefixCollection
+     */
+    private function groupWithItem($item, $prefix, $route)
+    {
+        $itemPrefix = $item instanceof self ? $item->prefix : $item[0];
+        $commonPrefix = $this->detectCommonPrefix($prefix, $itemPrefix);
+>>>>>>> dashboard-test
 
             return;
         }
 
+<<<<<<< HEAD
         // No optimised case was found, in this case we simple add the route for possible
         // grouping when new routes are added.
         $this->staticPrefixes[] = $staticPrefix;
@@ -129,6 +163,42 @@ class StaticPrefixCollection
      * Linearizes back a set of nested routes into a collection.
      */
     public function populateCollection(RouteCollection $routes): RouteCollection
+=======
+        $child = new self($commonPrefix);
+
+        if ($item instanceof self) {
+            $child->items = array($item);
+        } else {
+            $child->addRoute($item[0], $item[1]);
+        }
+
+        $child->addRoute($prefix, $route);
+
+        return $child;
+    }
+
+    /**
+     * Checks whether a prefix can be contained within the group.
+     *
+     * @param string $prefix
+     *
+     * @return bool Whether a prefix could belong in a given group
+     */
+    private function accepts($prefix)
+    {
+        return '' === $this->prefix || 0 === strpos($prefix, $this->prefix);
+    }
+
+    /**
+     * Detects whether there's a common prefix relative to the group prefix and returns it.
+     *
+     * @param string $prefix
+     * @param string $anotherPrefix
+     *
+     * @return false|string A common prefix, longer than the base/group prefix, or false when none available
+     */
+    private function detectCommonPrefix($prefix, $anotherPrefix)
+>>>>>>> dashboard-test
     {
         foreach ($this->items as $route) {
             if ($route instanceof self) {
@@ -146,7 +216,11 @@ class StaticPrefixCollection
      *
      * The static prefix stops at last at the first opening bracket.
      */
+<<<<<<< HEAD
     private function getCommonPrefix(string $prefix, string $anotherPrefix): array
+=======
+    public function optimizeGroups()
+>>>>>>> dashboard-test
     {
         $baseLength = \strlen($this->prefix);
         $end = min(\strlen($prefix), \strlen($anotherPrefix));
@@ -186,12 +260,45 @@ class StaticPrefixCollection
                 break;
             }
         }
+<<<<<<< HEAD
         restore_error_handler();
+=======
+    }
+
+    private function shouldBeInlined()
+    {
+        if (count($this->items) >= 3) {
+            return false;
+        }
+
+        foreach ($this->items as $item) {
+            if ($item instanceof self) {
+                return true;
+            }
+        }
+
+        foreach ($this->items as $item) {
+            if (is_array($item) && $item[0] === $this->prefix) {
+                return false;
+            }
+        }
+>>>>>>> dashboard-test
 
         return array(substr($prefix, 0, $i), substr($prefix, 0, $staticLength ?? $i));
     }
 
+<<<<<<< HEAD
     public static function handleError($type, $msg)
+=======
+    /**
+     * Guards against adding incompatible prefixes in a group.
+     *
+     * @param string $prefix
+     *
+     * @throws \LogicException when a prefix does not belong in a group
+     */
+    private function guardAgainstAddingNotAcceptedRoutes($prefix)
+>>>>>>> dashboard-test
     {
         return 0 === strpos($msg, 'preg_match(): Compilation failed: lookbehind assertion is not fixed length');
     }
