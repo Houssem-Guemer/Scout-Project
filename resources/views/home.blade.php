@@ -67,7 +67,7 @@
                 <div class=" card-body">
                     <h3 class="card-title">{{$cubPost->post_title}}</h3>
                     <h5>{{substr($cubPost->post_date, 0, 10)}}</h5>
-                    <h6 style="font-size: 12px;">وحدة الكشاف</h6>
+                    <h6 style="font-size: 12px;">وحدة الاشبال</h6>
 
                     <p class="card-text" style="font-family:'scheherazade' ;font-size: 150%;">{!! $cubPost->post_summary !!}</p>
                     <div class="row">
@@ -80,7 +80,7 @@
             </div>
             <div class="
             card card2 mb-3 col-md-6">
-                <div class="card-body" style=" background-image: url({{asset('images/PostCover/')}}{{"/".$scoutPost->cover_image}});">
+                <div class="card-body" style=" background-image: url({{asset('images/PostCover/')}}{{"/".$cubPost->cover_image}});">
                     <div class="color-filter"></div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 <div class=" card-body">
                     <h3 class="card-title">{{$scoutPost->post_title}}</h3>
                     <h5>{{substr($scoutPost->post_date, 0, 10)}}</h5>
-                    <h6 style="font-size: 12px;">وحدة الاشبال</h6>
+                    <h6 style="font-size: 12px;">وحدة الكشاف</h6>
 
                     <p class="card-text" style="font-family:'scheherazade' ;font-size: 150%;">{!! $scoutPost->post_summary !!}</p>
                     <div class="row">
