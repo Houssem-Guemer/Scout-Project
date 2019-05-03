@@ -434,3 +434,8 @@ Route::get('/scouts', function (Request $request) {
     $permissions = $request->user()->captain->role->permissions;
 
 })->middleware('auth:api');
+
+/*Mobile API*/
+Route::get('/minit','MobileController@initKeys');
+Route::get('/mlogin','MobileController@login');
+Route::middleware('auth:api')->get('/muser', 'MobileController@user');

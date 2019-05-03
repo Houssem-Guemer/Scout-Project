@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterScouts extends Migration
+class UpdateUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AlterScouts extends Migration
      */
     public function up()
     {
-        Schema::table('scouts', function (Blueprint $table) {
-            $table->string('latin_fname', 30);
-            $table->string('latin_lname', 30);
+        Schema::table('users', function ($table) {
+            $table->string('api_token', 80)->after('password')
+                ->unique()
+                ->nullable()
+                ->default(null);
         });
     }
 
@@ -26,9 +28,8 @@ class AlterScouts extends Migration
      */
     public function down()
     {
-        Schema::table('scouts', function (Blueprint $table) {
-            $table->dropColumn('latin_fname');
-            $table->dropColumn('latin_lname');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('api_token');
         });
     }
 }

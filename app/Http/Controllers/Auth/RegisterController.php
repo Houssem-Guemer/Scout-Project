@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use App\User;
+use Illuminate\Support\Str;
 use Validator;
 use DB;
 use App\Http\Controllers\Controller;
@@ -69,6 +70,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+             'api_token' => Str::random(60),
         ]);
 		$insertedId = $savedata->id;
 		DB::table('role_user')->insert(['user_id' => $insertedId, 'role_id' => 2]);

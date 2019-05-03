@@ -155,3 +155,4 @@ Route::get('/sitemap/events', 'SitemapController@events');
 Route::get('/sitemap/library', 'SitemapController@library');
 
 Route::get('/OptimizeImages', 'HomeController@OptimizeImages');
+
