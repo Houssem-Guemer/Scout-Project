@@ -26,13 +26,17 @@ class MobileController extends Controller
     public function login(Request $request){
         $success = true;
         $api_token = '';
+		$user=null;
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
             $api_token = $user->api_token;
+			$role = Auth::user()->captain->assignedRole->getRole();
+			$user = User::with(["profile","profile"])->where('scout_id',$user->scout_id)->get()->first();
         }else{
             $success = 'false';
         }
-        return response()->json(['success' => $success,'api_token' =>$api_token]);
+        return response()->json(['success' => $success,'api_token' =>$api_token,"first_name"=>$user->profile->first_name,"last_name"=>$user->profile->last_name,"scout_id"=>$user->scout_id,"image"=>$user->profile->image,"role"=>
+$role]);
     }
 
     //return the loged in user
@@ -41,4 +45,10 @@ class MobileController extends Controller
         $scout = Scout::where('scout_id',$user->scout_id)->get()->first();
         return response()->json(['scout'=>$scout]);
     }
+	
+	public function getScout()
+	{
+		$user = Scout::where('scout_id',1)->get();
+		return response()->json(["user"=>$user]);
+	}
 }

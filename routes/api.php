@@ -439,3 +439,8 @@ Route::get('/scouts', function (Request $request) {
 Route::get('/minit','MobileController@initKeys');
 Route::get('/mlogin','MobileController@login');
 Route::middleware('auth:api')->get('/muser', 'MobileController@user');
+Route::middleware('auth:api')->get('/mobile/getCubs','ScoutController@mgetScouts')->name('cubs');
+Route::middleware('auth:api')->get('/mobile/getScouts','ScoutController@mgetScouts')->name('scout');
+Route::middleware('auth:api')->get('/mobile/getAdvancedScouts','ScoutController@mgetScouts')->name('advanced_scouts');
+Route::middleware('auth:api')->get('/mobile/getTravelers','ScoutController@mgetScouts')->name('traveler');
+Route::middleware('auth:api')->get('/mobile/getCaptains','ScoutController@mgetScouts')->name('captain');

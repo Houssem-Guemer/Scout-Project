@@ -24,7 +24,7 @@ class ScoutController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
 
     }
     /**
@@ -53,6 +53,36 @@ class ScoutController extends Controller
             }
             if(Route::currentRouteNamed('captain')){
                 if(Auth::user()->captain->role=="gov")
+                $Scout = Captain::with('isScout')->get();
+                else
+                    $Scout = Captain::with('isScout')->where('role','!=','gov')->get();
+            }
+
+
+        return response()->json(["Scouts"=>$Scout]);
+    }
+	
+	    public function mgetScouts(Request $request){
+        $Scout ="";
+
+        /**
+         * get All scout of specific unit
+         */
+
+            if(Route::currentRouteNamed('cubs')){
+                $Scout = UnitScout::with('scout')->where('unit_id','cubs')->get();
+            }
+            if(Route::currentRouteNamed('scout')){
+                $Scout = UnitScout::with('scout')->where('unit_id','sct')->get();
+            }
+            if(Route::currentRouteNamed('advanced_scouts')){
+                $Scout = UnitScout::with('scout')->where('unit_id','asct')->get();
+            }
+            if(Route::currentRouteNamed('traveler')){
+                $Scout = UnitScout::with('scout')->where('unit_id','tvlr')->get();
+            }
+            if(Route::currentRouteNamed('captain')){
+                if(User::where('api_token',$request->input('api_token'))->get()->first()->captain->role=="gov")
                 $Scout = Captain::with('isScout')->get();
                 else
                     $Scout = Captain::with('isScout')->where('role','!=','gov')->get();
