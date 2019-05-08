@@ -14,10 +14,8 @@ class AlterScouts extends Migration
     public function up()
     {
         Schema::table('scouts', function (Blueprint $table) {
-            Schema::create('scouts', function (Blueprint $table) {
-                $table->string('latin_fname', 30);
-                $table->string('latin_lname', 30);    
-            });
+            $table->string('latin_fname', 30);
+            $table->string('latin_lname', 30);
         });
     }
 
@@ -29,7 +27,8 @@ class AlterScouts extends Migration
     public function down()
     {
         Schema::table('scouts', function (Blueprint $table) {
-            //
+            $table->dropColumn('latin_fname');
+            $table->dropColumn('latin_lname');
         });
     }
 }

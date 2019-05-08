@@ -4,6 +4,7 @@ namespace Illuminate\Database\Schema;
 
 use Closure;
 use LogicException;
+use Doctrine\DBAL\Types\Type;
 use Illuminate\Database\Connection;
 
 class Builder
@@ -69,7 +70,7 @@ class Builder
     {
         $table = $this->connection->getTablePrefix().$table;
 
-        return count($this->connection->select(
+        return count($this->connection->selectFromWriteConnection(
             $this->grammar->compileTableExists(), [$table]
         )) > 0;
     }
@@ -130,7 +131,7 @@ class Builder
      */
     public function getColumnListing($table)
     {
-        $results = $this->connection->select($this->grammar->compileColumnListing(
+        $results = $this->connection->selectFromWriteConnection($this->grammar->compileColumnListing(
             $this->connection->getTablePrefix().$table
         ));
 
@@ -204,6 +205,18 @@ class Builder
     }
 
     /**
+     * Drop all views from the database.
+     *
+     * @return void
+     *
+     * @throws \LogicException
+     */
+    public function dropAllViews()
+    {
+        throw new LogicException('This database driver does not support dropping all views.');
+    }
+
+    /**
      * Rename a table on the schema.
      *
      * @param  string  $from
@@ -261,11 +274,39 @@ class Builder
      */
     protected function createBlueprint($table, Closure $callback = null)
     {
+        $prefix = $this->connection->getConfig('prefix_indexes')
+                    ? $this->connection->getConfig('prefix')
+                    : '';
+
         if (isset($this->resolver)) {
-            return call_user_func($this->resolver, $table, $callback);
+            return call_user_func($this->resolver, $table, $callback, $prefix);
         }
 
-        return new Blueprint($table, $callback);
+        return new Blueprint($table, $callback, $prefix);
+    }
+
+    /**
+     * Register a custom Doctrine mapping type.
+     *
+     * @param  string  $class
+     * @param  string  $name
+     * @param  string  $type
+     * @return void
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function registerCustomDoctrineType($class, $name, $type)
+    {
+        if (Type::hasType($name)) {
+            return;
+        }
+
+        Type::addType($name, $class);
+
+        $this->connection
+            ->getDoctrineSchemaManager()
+            ->getDatabasePlatform()
+            ->registerDoctrineTypeMapping($type, $name);
     }
 
     /**

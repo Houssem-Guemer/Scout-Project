@@ -26,7 +26,7 @@ class ImageCacheController extends BaseController
 
             case 'download':
                 return $this->getDownload($filename);
-            
+
             default:
                 return $this->getImage($template, $filename);
         }
@@ -55,7 +55,7 @@ class ImageCacheController extends BaseController
                 // build from filter template
                 $image->make($path)->filter($template);
             }
-            
+
         }, config('imagecache.lifetime'));
 
         return $this->buildResponse($content);
@@ -96,7 +96,7 @@ class ImageCacheController extends BaseController
      * @param  string $template
      * @return mixed
      */
-    private function getTemplate($template)
+    protected function getTemplate($template)
     {
         $template = config("imagecache.templates.{$template}");
 
@@ -108,7 +108,7 @@ class ImageCacheController extends BaseController
             // filter template found
             case class_exists($template):
                 return new $template;
-            
+
             default:
                 // template not found
                 abort(404);
@@ -122,7 +122,7 @@ class ImageCacheController extends BaseController
      * @param  string $filename
      * @return string
      */
-    private function getImagePath($filename)
+    protected function getImagePath($filename)
     {
         // find file
         foreach (config('imagecache.paths') as $path) {
@@ -141,19 +141,26 @@ class ImageCacheController extends BaseController
     /**
      * Builds HTTP response from given image data
      *
-     * @param  string $content 
+     * @param  string $content
      * @return Illuminate\Http\Response
      */
-    private function buildResponse($content)
+    protected function buildResponse($content)
     {
         // define mime type
         $mime = finfo_buffer(finfo_open(FILEINFO_MIME_TYPE), $content);
 
+        // respond with 304 not modified if browser has the image cached
+        $etag = md5($content);
+        $not_modified = isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag;
+        $content = $not_modified ? NULL : $content;
+        $status_code = $not_modified ? 304 : 200;
+
         // return http response
-        return new IlluminateResponse($content, 200, array(
+        return new IlluminateResponse($content, $status_code, array(
             'Content-Type' => $mime,
             'Cache-Control' => 'max-age='.(config('imagecache.lifetime')*60).', public',
-            'Etag' => md5($content)
+            'Content-Length' => strlen($content),
+            'Etag' => $etag
         ));
     }
 }

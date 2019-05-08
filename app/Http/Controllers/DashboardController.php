@@ -80,7 +80,7 @@ class DashboardController extends Controller
 
 			//Recently logged in users
 			$recentuser = DB::table('users')->select('scout_id')
-						->orderBy('scout_id','DES')
+						->orderBy('scout_id','DESC')
 						->limit(5)->get();
 
 			$users = array();
@@ -97,7 +97,7 @@ class DashboardController extends Controller
 							->orderBy('date', 'ASC')
 							->get();
 
-			return view('dashboard.dashboard_page',compact('todayvisitor','monthvisitor','totaluser','newuser','users', 'recentactivity', 'graphregister'));
+			return view('dashboard.dashboard_page',compact('todayvisitor','monthvisitor','totaluser','newuser','users', 'graphregister'));
 		}
 		return $this->defaultDashboard();
 	}
