@@ -313,4 +313,44 @@ public function this_month_money_report(){
 				->get();
 				return response()->json(['money_data'=>$money]);
 }
+
+    public function mgetmoney_values(){
+
+        $current_month = Carbon::now()->format('m');
+        $money =DB::table("finances")
+            ->select('id')
+
+            ->whereRaw('MONTH(transaction_date) = ?',[$current_month])
+            ->orderBy('transaction_date','asc')
+            ->get();
+
+        $money_values = [];
+        $transaction_date=[];
+        $transaction_description=[];
+        $trans_money=[];
+        foreach($money as $key){
+            $transaction_money = Finance::select('money_total','transaction_date','transaction_description','transaction_money')
+                ->where('id',$key->id)
+                ->orderBy('transaction_date','asc')
+                ->get()[0];
+            array_push($money_values,$transaction_money->money_total);
+            array_push($transaction_date,$transaction_money->transaction_date);
+            array_push($transaction_description,$transaction_money->transaction_description );
+
+            array_push($trans_money,$transaction_money->transaction_money );
+
+        }
+
+
+
+        $current_month_days=[];
+        for($i=1;$i<=31;$i++){
+            array_push($current_month_days,$i);
+        }
+
+
+
+        return  response()->json(["transactions"=>[$money_values,$transaction_date,$current_month_days,$transaction_description,$trans_money]]);
+    }
+
 }

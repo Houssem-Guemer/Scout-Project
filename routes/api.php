@@ -444,3 +444,4 @@ Route::middleware('auth:api')->get('/mobile/getScouts','ScoutController@mgetScou
 Route::middleware('auth:api')->get('/mobile/getAdvancedScouts','ScoutController@mgetScouts')->name('advanced_scouts');
 Route::middleware('auth:api')->get('/mobile/getTravelers','ScoutController@mgetScouts')->name('traveler');
 Route::middleware('auth:api')->get('/mobile/getCaptains','ScoutController@mgetScouts')->name('captain');
+Route::middleware('auth:api')->get('/mobile/finance','FinanceController@mgetmoney_values')->name('finance');
