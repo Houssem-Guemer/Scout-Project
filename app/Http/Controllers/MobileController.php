@@ -27,16 +27,26 @@ class MobileController extends Controller
         $success = true;
         $api_token = '';
 		$user=null;
+        $first_name='';
+        $last_name='';
+        $scout_id='';
+        $image='';
+        $role='';
+        $last_modified = '';
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
             $api_token = $user->api_token;
 			$role = Auth::user()->captain->assignedRole->getRole();
 			$user = User::with(["profile","profile"])->where('scout_id',$user->scout_id)->get()->first();
+			$first_name = $user->profile->first_name;
+            $last_name = $user->profile->last_name;
+            $scout_id = $user->scout_id;
+            $image = $user->profile->image;
+            $last_modified = $user->updated_at;
         }else{
             $success = 'false';
         }
-        return response()->json(['success' => $success,'api_token' =>$api_token,"first_name"=>$user->profile->first_name,"last_name"=>$user->profile->last_name,"scout_id"=>$user->scout_id,"image"=>$user->profile->image,"role"=>
-$role]);
+        return response()->json(['success' => $success,'api_token' =>$api_token,"first_name"=>$first_name,"last_name"=>$last_name,"scout_id"=>$scout_id,"image"=>$image,"role"=>$role,"last_modified"=>$last_modified]);
     }
 
     //return the loged in user
