@@ -48,24 +48,24 @@ class MobileController extends Controller
                 if($email == config('unitAccount.units.cubs.email') && Hash::check($password,config('unitAccount.units.cubs.password'))){
                     $api_token = config('unitAccount.units.cubs.api_token');
 
-                    return response()->json(['success' => $success,"type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.cubs.unit_name')]);
+                    return response()->json(['success' => $success,"unit_image"=>"cubs-logo.png","type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.cubs.unit_name')]);
                 }
                 if($email == config('unitAccount.units.scouts.email') && Hash::check($password,config('unitAccount.units.scouts.password'))){
 
                    $api_token = config('unitAccount.units.scouts.api_token');
 
-                    return response()->json(['success' => $success,"type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.scouts.unit_name')]);
+                    return response()->json(['success' => $success,"unit_image"=>"scout-logo.png","type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.scouts.unit_name')]);
 
                 }
                 if($email == config('unitAccount.units.advancedscouts.email')  && Hash::check($password,config('unitAccount.units.advancedscouts.password'))){
                     $api_token = config('unitAccount.units.advancedscouts.api_token');
-                    return response()->json(['success' => $success,"type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.advancedscouts.unit_name')]);
+                    return response()->json(['success' => $success,"unit_image"=>"advanced_scout-logo.png","type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.advancedscouts.unit_name')]);
 
                 }
                 if($email == config('unitAccount.units.travelers.email') && Hash::check($password,config('unitAccount.units.travelers.password'))){
 
                     $api_token = config('unitAccount.units.travelers.api_token');
-                    return response()->json(['success' => $success,"type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.travelers.unit_name')]);
+                    return response()->json(['success' => $success,"unit_image"=>"traveler-logo.png","type"=>"unit",'api_token' =>$api_token,"unit_name"=>config('unitAccount.units.travelers.unit_name')]);
 
                 }
             }else
