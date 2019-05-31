@@ -7,7 +7,7 @@ use App\User;
 use App\Captain;
 use App\UnitAnnouncement;
 
-class UnitAnnouncement extends Controller
+class UnitAnnouncementController extends Controller
 {
     //
     public function create(Request $request){
