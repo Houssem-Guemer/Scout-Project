@@ -40,11 +40,10 @@
 
 </htmlpageheader>
 <div style="margin-right: 60px;margin-left: 60px">
-
 <div class="text-align-right" style="margin-top:20px">
 
-    <p style="text-align: right;margin-right:-25px"><span>  رقــم  :</span><span>{{$data['outing_mail']}}  / 2019  </span></p>
-
+    <p style="text-align: right;margin-right:-25px"><span>  رقــم  :</span><span> {{$data['outing_mail']}} / 2018  </span></p>
+    <p style="text-align: right;margin-right:-25px"> {{$data['date']}}   <span> :</span><span>التاريخ</span> </p>
 </div>
 
 <div style="margin-right:-25px;margin-bottom:30px">
@@ -53,15 +52,22 @@
 <div>
 
     <div style="text-align:right;margin-right:-25px;">
-      <p style="text-align:right;"> تحية كشفية وبعد : </p>
-        <p><span>أنا الممضي أسفله السيد: <b>{{$data['fullname']}}</b></span>&nbsp;&nbsp;&nbsp;<span>الوظيفة الكشفية: <b>{{$data['scout_job']}}</b></span></p>
-        <p><span>أكلف: السيد  <b>{{$data['charged']}}</b></span>&nbsp;&nbsp;&nbsp;</p>
-        <p><span>الحامل ل   <b>{{$data['paper_name']}} رقم </b></span>&nbsp; <span><b>{{$data['paper_code']}}</b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>الصادرة عن دائرة : </span><b>{{$data['issued_by']}}</b></p>
+      <p style="text-align:right;"> تحية كشفية وبعد :  </p>
+        <p><span>أنا الممضي أسفله السيد: <b>{{$data['fullname']}}</b></span></p>
+        <p><span>أكلف: السيد  <b>{{$data['charged']}}</b></span></p>
+      
         <p><span><b> المهمـة الموكلــة : </b></span><span>{{$data['mission']}}</span></p>
-      @if($data['mission_type']=="travel")  <p><span>الرقم التسلسلي للمركبة : </span> <b>{{$data['serial_number']}}</b></p>@endif
+        <p>
+            <span><span><b>الجهة المنظمة:  </b></span><span>{{$data['organiser']}}</span></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span><span><b> الجهة المؤطرة :  </b></span><span>{{$data['framed']}}</span></span>
+            </p>
 
-
-
+        <p>
+            <span><span><b> التاريخ : </b></span> <span>{{$data['time']}}</span></span>
+            &nbsp;&nbsp;&nbsp;
+            <span><span><b>المكان :   </b></span> <span>{{$data['location']}}</span></span>
+            </p>
 
     </div>
     <div style="text-align:center">
@@ -89,14 +95,13 @@
 
 
 </div>
+
+
+
 </div>
-
-
-
 <htmlpagefooter name="page-footer" >
     <img src= src="{{ public_path() .'/images/page_footer.png' }}" width="100%" height="180px" style="margin-bottom:-35px;" />
 </htmlpagefooter>
-
 <div>
 
 </div>

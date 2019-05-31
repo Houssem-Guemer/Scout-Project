@@ -24,12 +24,12 @@ class AccountsController extends Controller
     //
     public function __construct()
     {
-       $this->middleware('auth');
+      // $this->middleware('auth');
 
     }
 
     public function getcurrentuser(){
-     $user = Auth::user()->captain->role;
+         $user = Auth::user()->captain->role;
 		 return response()->json(["user_role"=>$user]);
 		}
 

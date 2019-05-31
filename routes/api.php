@@ -439,8 +439,18 @@ Route::get('/scouts', function (Request $request) {
 Route::get('/minit','MobileController@initKeys');
 Route::get('/mlogin','MobileController@login');
 Route::middleware('auth:api')->get('/muser', 'MobileController@user');
-Route::middleware('auth:api')->get('/mobile/getCubs','ScoutController@mgetScouts')->name('cubs');
-Route::middleware('auth:api')->get('/mobile/getScouts','ScoutController@mgetScouts')->name('scout');
-Route::middleware('auth:api')->get('/mobile/getAdvancedScouts','ScoutController@mgetScouts')->name('advanced_scouts');
-Route::middleware('auth:api')->get('/mobile/getTravelers','ScoutController@mgetScouts')->name('traveler');
-Route::middleware('auth:api')->get('/mobile/getCaptains','ScoutController@mgetScouts')->name('captain');
+Route::middleware(['auth:api','cache'])->get('/mobile/getCubs','ScoutController@mgetScouts')->name('cubs');
+Route::middleware(['auth:api','cache'])->get('/mobile/getScouts','ScoutController@mgetScouts')->name('scout');
+Route::middleware(['auth:api','cache'])->get('/mobile/getAdvancedScouts','ScoutController@mgetScouts')->name('advanced_scouts');
+Route::middleware(['auth:api','cache'])->get('/mobile/getTravelers','ScoutController@mgetScouts')->name('traveler');
+Route::middleware(['auth:api','cache'])->get('/mobile/getCaptains','ScoutController@mgetScouts')->name('captain');
+Route::middleware('auth:api')->get('/mobile/finance','FinanceController@mgetmoney_values')->name('finance');
+
+Route::middleware(['auth:api','cache'])->post('/mobile/EditScoutInfo/{id}','ScoutController@mEditScoutInfo');
+Route::middleware('auth:api')->get('/mobile/downloadOuting_mailPDF','FormsController@mdownloadOuting_mailPDF');
+Route::middleware('auth:api')->get('/mobile/download_Assigning_mission_mobile','FormsController@mdownloadAssigning_missionPDF');
+Route::middleware('auth:api')->get('/mobile/download_Assigning_mission_Travel_mobile','FormsController@mAssigning_mission_travel');
+
+Route::middleware(['auth:api','cache'])->get('/mobile/users-accounts','AccountsController@getUsersAccounts');
+Route::middleware('auth:api')->get('/mobile/changeemail/{scout_id}','AccountsController@ChangeUserEmail');
+Route::middleware('auth:api')->get('/mobile/changepassword/{scout_id}','AccountsController@ChangeUserPassword');

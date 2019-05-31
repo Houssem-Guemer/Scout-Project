@@ -53,12 +53,12 @@
 <div>
 
     <div style="text-align:right;margin-right:-25px;">
-      <p style="text-align:right;"> تحية كشفية وبعد : </p>
+      <p style="text-align:right;" dir="rtl"> تحية كشفية وبعد : </p>
         <p><span>أنا الممضي أسفله السيد: <b>{{$data['fullname']}}</b></span>&nbsp;&nbsp;&nbsp;<span>الوظيفة الكشفية: <b>{{$data['scout_job']}}</b></span></p>
-        <p><span>أكلف: السيد  <b>{{$data['charged']}}</b></span>&nbsp;&nbsp;&nbsp;</p>
+        <p><span>أكلف: السيد  <b>{{$data['charged']}}</b></span></p>
         <p><span>الحامل ل   <b>{{$data['paper_name']}} رقم </b></span>&nbsp; <span><b>{{$data['paper_code']}}</b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>الصادرة عن دائرة : </span><b>{{$data['issued_by']}}</b></p>
         <p><span><b> المهمـة الموكلــة : </b></span><span>{{$data['mission']}}</span></p>
-      @if($data['mission_type']=="travel")  <p><span>الرقم التسلسلي للمركبة : </span> <b>{{$data['serial_number']}}</b></p>@endif
+       <p><span>الرقم التسلسلي للمركبة : </span> <b>{{$data['serial_number']}}</b></p>
 
 
 

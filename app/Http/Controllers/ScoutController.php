@@ -57,6 +57,9 @@ class ScoutController extends Controller
                 else
                     $Scout = Captain::with('isScout')->where('role','!=','gov')->get();
             }
+			
+			
+
 
 
         return response()->json(["Scouts"=>$Scout]);
@@ -88,7 +91,7 @@ class ScoutController extends Controller
                     $Scout = Captain::with('isScout')->where('role','!=','gov')->get();
             }
 
-
+              
         return response()->json(["Scouts"=>$Scout]);
     }
 
@@ -113,6 +116,51 @@ class ScoutController extends Controller
         }
 
         return response()->json(["Scouts"=>$Scout]);
+    }
+	
+	    public function insert_Image( $image,$exte,$unit_id){
+        $filename="";
+        $filepath="";
+        if($image=="/images/default.png"){
+            $filename="";
+        }else{
+           
+            $decode = base64_decode($image);
+            
+            $currenttime = Carbon::now()->timestamp;
+
+            switch ($unit_id){
+                case 'cubs':{
+                    $filename = 'Cubs-'.$currenttime.'.'.$exte;
+                    $filepath = public_path().'/images/Cubs/'.$filename;
+                    break;
+                }
+                case 'sct':{
+                    $filename = 'Scout-'.$currenttime.'.'.$exte;
+                    $filepath = public_path().'/images/Scout/'.$filename;
+                    break;
+                }
+                case 'asct':{
+                    $filename = 'AdvancedScout-'.$currenttime.'.'.$exte;
+                    $filepath = public_path().'/images/AdvancedScout/'.$filename;
+                    break;
+                }
+                case 'tvlr':{
+                    $filename = 'Traveler-'.$currenttime.'.'.$exte;
+                    $filepath = public_path().'/images/Traveler/'.$filename;
+                    break;
+                }
+                default:{
+                    $filename = 'Captain-'.$currenttime.'.'.$exte;
+                    $filepath = public_path().'/images/Captain/'.$filename;
+                }
+            }
+
+            file_put_contents($filepath,$decode);
+
+        }
+        return $filename;
+
     }
 
     /**
@@ -937,6 +985,64 @@ class ScoutController extends Controller
 
      }
 
+
+/**
+*
+*   edit scout for mobile
+*
+*/
+public function mEditScoutInfo(Request $request,$scout_id){
+	$scout = Scout::find($scout_id);
+	$first_name = $request->input('first_name');
+	$last_name = $request->input('last_name');
+	$place_of_birth = $request->input('place_of_birth');
+	$date_of_birth = $request->input('date_of_birth');
+	$image = $request->input('image');
+	$address = $request->input('address');
+	$phone = $request->input('phone');
+	$unit_id = $request->input('unit_id');
+	$imgext = $request->input('imgext');
+
+	if($image != "default.png")
+	   if($image!= $scout->image){
+		   $image = $this->insert_Image($image,$imgext,$unit_id);
+		   
+		   switch ($unit_id){
+                case 'cubs':{
+                    $this->OptimizeImages('/images/Cubs',$image);
+                    break;
+                }
+                case 'sct':{
+                    $this->OptimizeImages('/images/Scout',$image);
+                    break;
+                }
+                case 'asct':{
+                    $this->OptimizeImages('/images/AdvancedScout',$image);
+                    break;
+                }
+                case 'tvlr':{
+                    $this->OptimizeImages('/images/Traveler',$image);
+                    break;
+                }
+                default:{
+                    $this->OptimizeImages('/images/Captain',$image);
+                }
+            }
+		   
+	   }
+	  
+	   $scout->first_name = $first_name;
+	   $scout->last_name = $last_name;
+	   $scout->date_of_birth = $date_of_birth;
+	   $scout->place_of_birth = $place_of_birth;
+	   $scout->address = $address;
+	   $scout->phone = $phone;
+       $scout->image = $image;
+	   $scout->save();
+
+
+	return response()->json(["success"=>true,"scout"=>$scout]);
+}
        /**
         * @param $id
         * delete a specific scout from data base

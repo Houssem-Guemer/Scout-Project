@@ -318,7 +318,7 @@ class FormsController extends  Controller
 
         return $pdf->download('example.pdf');
     }
-    public function downloadAssigning_missionPDF(Request $request){
+    public function downloadAssigning_missionPDF (Request $request){
         $outing_mail = $request->input('outing_mail');
        $fullname = $request->input('fullname.0');
         $fullname_id =$fullname['scout_id'] ;
@@ -389,6 +389,132 @@ class FormsController extends  Controller
 
         file_put_contents($pdfroot, $pdf_string);
         return $pdf->download('example.pdf');
+    }
+    
+    public function mdownloadAssigning_missionPDF(Request $request){
+        $outing_mail = $request->input('outing_mail');
+    
+        $date = $request->input('date');
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $charged = $request->input('charged');
+        $framed = $request->input('framed');
+        $organiser = $request->input('organiser');
+        $mission = $request->input('mission');
+        $location = $request->input('location');
+        $api_token = $request->input('api_token');
+        $fullname = $request->input('fullname');
+
+        if($from == $to){
+            $time = $from;
+        }else{
+            $from_year = substr($from,0,4);
+            $to_year = substr($from,0,4);
+
+            if($from_year == $to_year){
+                $from_month = substr($from,5,2);
+                $to_month = substr($from,5,2);
+                if($from_month == $to_month){
+                    $from_day =  substr($from,8,2);
+                    $to_day =  substr($to,8,2);
+                    $time =$from_day.'-'.$from_year.'/'.$from_month.'/'.$to_day;
+                }else{
+                    $time =$to.'-'. $from;
+                }
+            }else{
+                $time =$to.'-'. $from;
+            }
+
+            
+        }
+
+        $filename =date('YmdHis',time()).mt_rand().'.pdf';
+        $outing_mail = DB::table('correspondences')->insertGetId([
+            "sender"=>User::where('api_token',$api_token)->get()->first()->scout_id,
+            "time"=>"",
+            "to"=>"",
+            "subject"=>"تكليف بهمة كشفية",
+            "content"=>"",
+            "gov"=>"",
+            "approved"=>true,
+            "file"=>$filename,
+            "created_at"=>Carbon::now()->format('Y-m-d'),
+        ]);
+        $data =["outing_mail"=>$outing_mail,
+            "date"=>$date,
+            "time"=>$time,
+            "charged"=>$charged,
+            "mission"=>$mission,
+            "fullname"=>$fullname,
+            "framed"=>$framed,
+            'organiser'=>$organiser,
+            'location'=>$location];
+        $pdf = PDF::loadView('FormsTemplate.Assigning_mission_mobile',compact('data'));
+        $pdf_string = $pdf->output();
+        $pdfroot = public_path() . '/uploads/Correspondence/' . $filename;
+
+        file_put_contents($pdfroot, $pdf_string);
+        return $pdf->download('example.pdf');
+    }
+
+	  public function mdownloadOuting_mailPDF(Request $request){
+        $api_token = $request->input('api_token');
+	    $content = $request->input('content');
+        $date = $request->input('date');
+        $outing_mail="15";
+        $to = $request->input('to');
+        $subject = $request->input('subject');
+		 $gov = Scout::where('scout_id',Captain::where('role','gov')->get()->first()->scout_id)->get()->first();
+		 $gov = $gov->last_name." ".$gov->first_name;
+
+		 $filename="";
+         $agree = true;
+      if(User::where('api_token',$api_token)->get()->first()->captain->role!="gov"){
+            $filename =date('YmdHis',time()).mt_rand().'.pdf';
+            $outing_mail=  DB::table('correspondences')->insertGetId([
+                "sender"=>User::where('api_token',$api_token)->get()->first()->scout_id,
+                "time"=>$date,
+                "to"=>$to,
+                "subject"=>$subject,
+                "content"=>$content,
+                "gov"=>$gov,
+                "approved"=>true,
+                "file"=>$filename,
+                "created_at"=>Carbon::now()->format('Y-m-d'),
+            ]);
+         $agree=true;
+           $data =["agree"=>$agree,"content"=>$content,"date"=>$date,'outing_mail_number'=>$outing_mail,'subject'=>$subject,'to'=>$to,"gov"=>$gov];
+
+           $pdf = PDF::loadView('/FormsTemplate/Outing_mail',compact('data'));
+           $pdf_string = $pdf->output();
+            $pdfroot = public_path() . '/uploads/Correspondence/' . $filename;
+
+            file_put_contents($pdfroot, $pdf_string);
+
+        }else{
+          $filename =date('YmdHis',time()).mt_rand().'.pdf';
+          if(Correspondence::count()==0){
+              $outing_mail = 1;
+          }else{
+              $outing_mail = (Correspondence::all()->last()->outing_mail_id)+1;
+          }
+
+          $agree=false;
+          $data =["agree"=>$agree,"content"=>$content,"date"=>$date,'outing_mail_number'=>$outing_mail,'subject'=>$subject,'to'=>$to,"gov"=>$gov];
+
+          $pdf = PDF::loadView('/FormsTemplate/Outing_mail',compact('data'));
+          $pdf_string = $pdf->output();
+          $pdfroot = public_path() . '/uploads/Correspondence/' . $filename;
+
+          file_put_contents($pdfroot, $pdf_string);
+         
+
+
+        }
+
+        
+
+        return response()->json($pdf->download('example.pdf'));
     }
     public function getMyScout(){
         $user_unit = Auth::user()->captain->unit;
@@ -713,6 +839,7 @@ class FormsController extends  Controller
         $serial_number = $request->input('serial_number');
         $paper_code = $request->input('paper_code');
         $scout_job="";
+     
 
         if(is_array($fullname)){
             $scout_job =Captain::find($fullname[0]['scout_id'])->assignedRole->getRole() ;
@@ -752,6 +879,59 @@ class FormsController extends  Controller
         file_put_contents($pdfroot, $pdf_string);
 
         return $pdf->download();
+
+
+    }
+
+    public function mAssigning_mission_travel(Request $request){
+        $api_token = $request->input('api_token');
+        $fullname = $request->input('fullname');
+        $charged = $request->input('charged');
+        $mission_type = $request->input('mission_type');
+        $paper_name = $request->input('paper_name');
+        $issued_by = $request->input('issued_by');
+        $mission = $request->input('mission');
+        $serial_number = $request->input('serial_number');
+        $paper_code = $request->input('paper_code');
+        $scout_job="";
+        $user_id = User::where('api_token',$api_token)->get()->first()->scout_id;
+
+        
+        $scout_job =Captain::find($user_id)->assignedRole->getRole();
+           
+        
+        $filename =date('YmdHis',time()).mt_rand().'.pdf';
+        $outing_mail = DB::table('correspondences')->insertGetId([
+            "sender"=>$user_id,
+            "time"=>"",
+            "to"=>"",
+            "subject"=>"تكليف بهمة",
+            "content"=>"",
+            "gov"=>"",
+            "approved"=>true,
+            "file"=>$filename,
+            "created_at"=>Carbon::now()->format('Y-m-d'),
+        ]);
+        $data=["fullname"=>$fullname,
+               "scout_job"=>$scout_job,
+               "charged"=>$charged,
+                "mission_type"=>$mission_type,
+               "paper_name"=>$paper_name,
+               "issued_by"=>$issued_by,
+               "serial_number"=>$serial_number,
+               "paper_code"=>$paper_code,
+               "mission"=>$mission,
+               "outing_mail"=>$outing_mail
+
+            ];
+        $pdf = PDF::loadView('/FormsTemplate/mobile_Assigning_mission_Travel',compact('data'));
+
+        $pdf_string = $pdf->output();
+        $pdfroot = public_path() . '/uploads/Correspondence/' . $filename;
+
+        file_put_contents($pdfroot, $pdf_string);
+
+        return response()->json($pdf->download());
 
 
     }

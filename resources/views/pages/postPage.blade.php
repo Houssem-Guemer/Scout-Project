@@ -106,6 +106,17 @@
                             <p>{!! $currentPost->description !!}</p>
                         </div>
 
+                        <ul style="    list-style-type: none;display: inherit;">
+                        <li>
+                        </li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ URL::current() }}"  targert="_blank" title="Facebook" class="btn btn-facebook btn-lg" style="    padding: 0;"><i class="fab fa-facebook-f " style="    padding-right: 10px;"></i> Facebook</a>
+
+                        <li>
+                        </li>
+                        <a href="https://twitter.com/intent/tweet?text={{strip_tags($currentPost->post_summary)}}&amp;url={{ URL::current() }}" targert="_blank" title="Facebook" class="btn btn-facebook btn-lg" style="    padding: 0;background-color:#1DA1F2"><i class="fab fa-twitter " style="    padding-right: 10px"></i> Twitter</a>
+
+                        </ul>
+
 
 
                     </div>
@@ -122,6 +133,81 @@
 @endsection
 @section('styles')
     <link rel="stylesheet" href="/css/newsBig.css">
+    <style>
+    .eapps-social-share-buttons-item {
+    /* height: 40px; */
+    /* line-height: 40px; */
+    /* min-width: 82px; */
+    /* width: 144px; */
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    backface-visibility: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.3s;
+    text-decoration: none;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 0;
+}
+.eapps-social-share-buttons-item-icon-container {
+    display: block;
+    max-width:70px !important;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 12px;
+    transition: all 0.2s ease;
+}
+.eapps-social-share-buttons-item-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    backface-visibility: hidden;
+    transition: all 0.2s ease;
+}
+.eapps-social-share-buttons-item-icon-container, .eapps-social-share-buttons-item-text {
+    position: relative;
+    z-index: 2;
+}
+.eapps-social-share-buttons-item-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    padding: 0 10px 0 40px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    backface-visibility: hidden;
+   
+}
+.btn-facebook {
+	  background: #3B5998;
+	  border-radius: 0;
+	  color: #fff;
+	  border-width: 1px;
+      border-radius: 45px;
+      width: 15%;
+    margin: 10px;
+	}
+	.btn-facebook:link, .btn-facebook:visited {
+	  color: #fff;
+	}
+	.btn-facebook:active, .btn-facebook:hover {
+	  background: #263961;
+	  color: #fff;
+	}
+  
+
+    </style>
 @endsection
 @section('og')
     <meta property="og:title" content="{{ $currentPost->post_title }}" />
