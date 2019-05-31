@@ -118,7 +118,7 @@ class ScoutController extends Controller
         return response()->json(["Scouts"=>$Scout]);
     }
 	
-	    public function insert_Image( $image,$exte,$unit_id){
+     public function insert_Image( $image,$exte,$unit_id){
         $filename="";
         $filepath="";
         if($image=="/images/default.png"){
