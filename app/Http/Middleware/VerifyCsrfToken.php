@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
 		
-		'api/mobile/EditScoutInfo/*'
+        'api/mobile/EditScoutInfo/*',
+        'api/mobile/publicAnnouncement'
     ];
 }
