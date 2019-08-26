@@ -31,7 +31,6 @@
     @yield('title')
     <link href='{{ url('/eventsFeed') }}' rel='alternate' title='RSS' type='application/rss+xml'/>
     <link href='{{ url('/postsFeed') }}' rel='alternate' title='RSS' type='application/rss+xml'/>
-
     <style>
         @font-face {
             font-family: "Alarabiya Font";
@@ -44,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="/css/governor.css" />
     <script>
         window.addEventListener("load", function(){
             window.cookieconsent.initialise({

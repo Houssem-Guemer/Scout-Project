@@ -15,6 +15,6 @@ class VerifyCsrfToken extends BaseVerifier
         //
 		
         'api/mobile/EditScoutInfo/*',
-        'api/mobile/publicAnnouncement'
+        'api/mobile/publishAnnouncement'
     ];
 }

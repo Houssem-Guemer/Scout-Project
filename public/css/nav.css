@@ -63,8 +63,8 @@
     left: 50%;
     top: 90%;
     transform: translate(-50%, -50%);
-    width: 70px ;
-    height: 70px ;
+    width: 100px ;
+    height: 100px ;
     background-color: #fafafa !important;
     border-radius: 50%;
     text-align: center;
@@ -82,8 +82,8 @@
 
 
 .navbar-brand img {
-    height: 70px;
-    width: 70px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
 
 }

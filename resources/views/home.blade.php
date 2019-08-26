@@ -3,9 +3,11 @@
     <section class="home-bg-img col-md-12">
         <div class="container ">
             <h1>فوج الفلاح
-                <span id="span-ani" style="height:80px;margin-bottom:50px "></span>
+                <span id="span-ani" style="height:80px;margin-bottom:50px;display: none; "></span>
+                <span  style="height:80px;margin-bottom:50px ">ثلاثون عاما من الوعد والوفاء</span>
+
             </h1>
-           <a href="/about" class="square_btn">!...من نحن </a>
+           <a href="/about" style="de" class="square_btn">!...من نحن </a>
          
         </div>
     </section>
@@ -188,6 +190,34 @@
         </div>
     </section>
 
+
+    <section class="governor container-fluid">
+        <div class="row w-100 p-0 m-0">
+            <div class="container-one col-md-6 col-sm-12 col-lg-6 p-0 m-0 text-center"><h6 dir="rtl">  الموقع الشخصي للسيد محافظ الفوج القائد براء عبد الإله مويات مختص إعلام آلي  عضو المجلس الولائي والمفوضية الوطنية للعلاقات الدولية، كاتب من أجل المتعة، مختص اعلام الي
+
+            <br>- أحد الشباب الواعد الكشافة الإسلامية الجزائرية - 
+
+            <br> <div style="margin-right:18%;margin-left:18%;margin-top:20px"><span style="font-size:20px;">"إن العمل في فوج الفلاح - هذه المدرسة العريقة - هو فخر ما بعده فخر و قبل كل شيء فإن الإنتماء لهذا الكيان العظيم هو إنتماء لتاريخ مجيد ومستقبل واعد ."<span></div> 
+
+
+</h6>
+                       <a class=" website-link" href="#" style="font-weight: bold;text-decoration:none;"> <i class="arrow arrow-left"></i> الموقع الشخصي</a>
+            </div>
+            <div class="container_two col-md-6 col-sm-12 col-lg-6 p-0 m-0">
+                <div class="row w-100 m-0 p-0">
+                    <div class="col-md-1 col-sm-12 p-0 m-0">
+                        <div class="headerDivider"></div>
+                    </div>
+                    <div class="profile-img col-md-11 col-sm-12 p-0 m-0">
+                        <img src="images/RAsset_5.png" alt="governor">
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
     
 
     <!---->
@@ -356,7 +386,7 @@
         $(document).ready(function(){
             $("#span-ani").ghosttyper({
 
-                messages:['|...فلاح','|...كفاح','|...نجاح','|...تقدم','|...عمل'],
+                messages:[],
                 timeWrite:150,
                 timeDelete:120,
                 timePause:1000

@@ -70,10 +70,13 @@ img {
     display: inline-block;
     font-weight: bold;
     padding: 8px 20px 6px;
-    text-decoration: none;
+    text-decoration: none !important;
     color: #FFF;
     transition: .4s;
     
+}
+.square_btn:hover{
+    color: #FFF;
 }
 
 .square_btn:before{

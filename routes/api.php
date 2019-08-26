@@ -454,4 +454,5 @@ Route::middleware('auth:api')->get('/mobile/download_Assigning_mission_Travel_mo
 Route::middleware(['auth:api','cache'])->get('/mobile/users-accounts','AccountsController@getUsersAccounts');
 Route::middleware('auth:api')->get('/mobile/changeemail/{scout_id}','AccountsController@ChangeUserEmail');
 Route::middleware('auth:api')->get('/mobile/changepassword/{scout_id}','AccountsController@ChangeUserPassword');
-Route::middleware('auth:api')->get('/mobile/publishAnnouncement','UnitAnnouncementController@create');
+Route::middleware('auth:api')->post('/mobile/publishAnnouncement','UnitAnnouncementController@create');
+Route::get('/mobile/getUnitAnnouncement','UnitAnnouncementController@getUnitAnnouncements');

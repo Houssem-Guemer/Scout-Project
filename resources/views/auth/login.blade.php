@@ -8,7 +8,7 @@
 	
 	<div class="page-content vertical-align-middle" style="background: rgba(40, 41, 41, 0.17);">
       <div class="brand">
-	  <img class="navbar-brand-logo" style="height:120px" src="{{URL::to('/images/login_logo.png')}}" title="faleh logo"/>
+	  <img class="navbar-brand-logo" style="height:120px;border-radius:50%" src="{{URL::to('/images/login_logo.png')}}" title="faleh logo"/>
         <h2 class="brand-text"> {{trans('app.scoutspace')}}</h2>
       </div>
       <p> {{ trans('app.sing_into_your_pages_account')}}</p>
