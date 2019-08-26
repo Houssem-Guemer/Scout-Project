@@ -201,7 +201,7 @@
 
 
 </h6>
-                       <a class=" website-link" href="#" style="font-weight: bold;text-decoration:none;"> <i class="arrow arrow-left"></i> الموقع الشخصي</a>
+                       <a class=" website-link" href="https://baraemouyet.wixsite.com/barae" style="font-weight: bold;text-decoration:none;"> <i class="arrow arrow-left"></i> الموقع الشخصي</a>
             </div>
             <div class="container_two col-md-6 col-sm-12 col-lg-6 p-0 m-0">
                 <div class="row w-100 m-0 p-0">
