@@ -1,14 +1,14 @@
 @extends('layouts.new_template')
 @section('content')
     <section class="home-bg-img col-md-12">
-        <div class="container ">
+        <div >
             <h1>
                 <span id="span-ani" style="height:80px;margin-bottom:50px;display: none; "></span>
               
 
             </h1>
-           <a href="/about" style="de" class="square_btn">!...من نحن </a>
-         
+            <!--  <a href="/about" style="de" class="square_btn">!...من نحن </a>-->
+           
         </div>
     </section>
     <!---->
