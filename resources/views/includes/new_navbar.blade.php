@@ -70,8 +70,11 @@ if (Route::currentRouteNamed('captains')){
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="row ghadje" style="width:100%;padding:0;margin:0">
                 <ul class="navbar-nav col-md-12" >
-                    <li class="nav-item active col-md-2  topnav">
+                   <!-- <li class="nav-item active col-md-2  topnav">
                         <a class="nav-link" href="/contact">تواصل معنا <span class="sr-only">(current)</span></a>
+                    </li>-->
+                    <li class="nav-item active col-md-2  topnav">
+                        <a class="nav-link" href="/registration">التسجيلات <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item col-md-2 topnav">
                         <a class="nav-link" href="/team">القادة</a>

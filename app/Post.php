@@ -23,4 +23,8 @@ class Post extends Model
     {
         return $query->where('approved', 1);
     }
+
+    public function post_images(){
+        return $this->hasMany('App\PostImage','post_id','post_id');
+    }
 }

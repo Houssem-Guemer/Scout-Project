@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Scout;
 use App\User;
+use App\Captain;
+use App\BooksCategory;
+use App\BooksLibrary;
+use App\Post;
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -88,5 +93,40 @@ $role]);
 	{
 		$user = Scout::where('scout_id',1)->get();
 		return response()->json(["user"=>$user]);
-	}
+    }
+    
+    public function getStaff(){
+        $captain = Captain::with('isScout')->get();
+		return response()->json(["staff"=>$captain]);
+    }
+
+    public function getBooks(){
+        $books = BooksLibrary::all();
+        $categories = BooksCategory::all();
+        return response()->json(["categories"=>$categories,"books"=>$books]);
+    }
+    public function getCategories(){
+        $categories = BooksCategory::all();
+        return response()->json(["categories"=>$categories]);
+
+    }
+
+    public function getUnitsNews(){
+        $captains_news = Post::with('post_images')->where('linked_unit','cap')->where('approved',true)->get();
+        $travelers_news = Post::with('post_images')->where('linked_unit','tvlr')->where('approved',true)->get();
+        $asct_news = Post::with('post_images')->where('linked_unit','asct')->where('approved',true)->get();
+        $scout_news = Post::with('post_images')->where('linked_unit','sct')->where('approved',true)->get();
+        $cubs_news = Post::with('post_images')->where('linked_unit','cubs')->where('approved',true)->get();
+
+      return response()->json(["captain"=>$captains_news,
+                                "traveler"=>$travelers_news,
+                                "asct"=>$asct_news,
+                                "scout"=>$scout_news,
+                                "cubs"=>$cubs_news]);
+    }
+
+    public function getHomePageNews(){
+       $posts = Post::with('post_images')->where('approved',true)->orderBy('post_id','desc')->limit(10)->get();
+        return response()->json(["posts"=>$posts]);
+    }
 }

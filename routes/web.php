@@ -52,6 +52,9 @@ Route::post('/contactForm', 'PostSubscribe@contactForm')->middleware('optimizeIm
 Route::get('/login', 'DashboardController@index');
 Route::get('/logout', 'DashboardController@index');
 Route::get('/user', 'ActivityController@index');
+Route::get('/registration', function(){
+    return view('inscription');
+});
 
 Route::get('/dashboard', 'DashboardController@index');
 Route::any('/dashboard/{query}', 'DashboardController@index')->where('query', '.*');

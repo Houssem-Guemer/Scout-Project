@@ -456,3 +456,11 @@ Route::middleware('auth:api')->get('/mobile/changeemail/{scout_id}','AccountsCon
 Route::middleware('auth:api')->get('/mobile/changepassword/{scout_id}','AccountsController@ChangeUserPassword');
 Route::middleware('auth:api')->post('/mobile/publishAnnouncement','UnitAnnouncementController@create');
 Route::get('/mobile/getUnitAnnouncement','UnitAnnouncementController@getUnitAnnouncements');
+
+
+Route::get('/getStaff','MobileController@getStaff');
+Route::get('/library/getBooks','MobileController@getBooks');
+Route::get('/library/getCategories','MobileController@getCategories');
+Route::get('/getUnitsNews','MobileController@getUnitsNews');
+Route::get('/home/getposts','MobileController@getHomePageNews');
+

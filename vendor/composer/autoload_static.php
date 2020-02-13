@@ -478,7 +478,6 @@ class ComposerStaticInitfd831b3308118b39df7d46c82a967d82
     public static $classMap = array (
         'AddForeignKeys' => __DIR__ . '/../..' . '/database/migrations/2015_10_10_171734_add_foreign_keys.php',
         'AddImageToUsersAndPosts' => __DIR__ . '/../..' . '/database/migrations/2018_08_13_175829_add_image_to_users_and_posts.php',
-        'AlterScouts' => __DIR__ . '/../..' . '/database/migrations/2019_02_06_231100_alter_scouts.php',
         'CaptainSeeder' => __DIR__ . '/../..' . '/database/seeds/CaptainSeeder.php',
         'CountrySeeder' => __DIR__ . '/../..' . '/database/seeds/CountrySeeder.php',
         'CreateBankAccountsTable' => __DIR__ . '/../..' . '/database/migrations/2018_10_09_212352_create_bank_accounts_table.php',
@@ -495,6 +494,7 @@ class ComposerStaticInitfd831b3308118b39df7d46c82a967d82
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePostSubscribersTable' => __DIR__ . '/../..' . '/database/migrations/2018_10_19_222653_create_post_subscribers_table.php',
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_10_171049_create_posts_table.php',
+        'CreateRegistrationsTable' => __DIR__ . '/../..' . '/database/migrations/2019_08_31_065032_create_registrations_table.php',
         'CreateScoutsTable' => __DIR__ . '/../..' . '/database/migrations/2015_06_20_101724_create_scouts_table.php',
         'CreateSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2015_08_25_172600_create_settings_table.php',
         'CreateSocialAccountsTable' => __DIR__ . '/../..' . '/database/migrations/2015_10_10_170911_create_social_accounts_table.php',
@@ -1160,7 +1160,6 @@ class ComposerStaticInitfd831b3308118b39df7d46c82a967d82
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
         'UnitsSeeder' => __DIR__ . '/../..' . '/database/seeds/UnitsSeeder.php',
-        'UpdateUserTable' => __DIR__ . '/../..' . '/database/migrations/2019_05_03_190508_update_user_table.php',
         'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
         'Zizaco\\Entrust\\MigrationCommand' => __DIR__ . '/..' . '/zizaco/entrust/src/commands/MigrationCommand.php',
         'fpdi_pdf_parser' => __DIR__ . '/..' . '/setasign/fpdi/fpdi_pdf_parser.php',
