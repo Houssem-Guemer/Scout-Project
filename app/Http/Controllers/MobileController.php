@@ -112,11 +112,11 @@ $role]);
     }
 
     public function getUnitsNews(){
-        $captains_news = Post::with(['post_images','is_captain'])->where('linked_unit','cap')->where('approved',true)->get();
-        $travelers_news = Post::with(['post_images','is_captain'])->where('linked_unit','tvlr')->where('approved',true)->get();
-        $asct_news = Post::with(['post_images','is_captain'])->where('linked_unit','asct')->where('approved',true)->get();
-        $scout_news = Post::with(['post_images','is_captain'])->where('linked_unit','sct')->where('approved',true)->get();
-        $cubs_news = Post::with(['post_images','is_captain'])->where('linked_unit','cubs')->where('approved',true)->get();
+        $captains_news = Post::with(['post_images','post_creator'])->where('linked_unit','cap')->where('approved',true)->get();
+        $travelers_news = Post::with(['post_images','post_creator'])->where('linked_unit','tvlr')->where('approved',true)->get();
+        $asct_news = Post::with(['post_images','post_creator'])->where('linked_unit','asct')->where('approved',true)->get();
+        $scout_news = Post::with(['post_images','post_creator'])->where('linked_unit','sct')->where('approved',true)->get();
+        $cubs_news = Post::with(['post_images','post_creator'])->where('linked_unit','cubs')->where('approved',true)->get();
 
       return response()->json(["captain"=>$captains_news,
                                 "traveler"=>$travelers_news,
