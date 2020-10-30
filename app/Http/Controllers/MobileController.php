@@ -112,6 +112,8 @@ $role]);
     }
 
     public function getUnitsNews(){
+        $books = BooksLibrary::all();
+        $captain = Captain::with('isScout')->get();
         $captains_news = Post::with(['post_images','post_creator','is_captain'])->where('linked_unit','cap')->where('approved',true)->get();
         $travelers_news = Post::with(['post_images','post_creator','is_captain'])->where('linked_unit','tvlr')->where('approved',true)->get();
         $asct_news = Post::with(['post_images','post_creator','is_captain'])->where('linked_unit','asct')->where('approved',true)->get();
@@ -122,7 +124,9 @@ $role]);
                                 "traveler"=>$travelers_news,
                                 "asct"=>$asct_news,
                                 "scout"=>$scout_news,
-                                "cubs"=>$cubs_news]);
+                                "cubs"=>$cubs_news,
+                                 "books"=>$books,
+                                 "staff"=>$captain]);
     }
 
     public function getHomePageNews(){
